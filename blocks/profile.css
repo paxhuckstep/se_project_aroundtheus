@@ -36,7 +36,8 @@
   border-color: white;
   border-width: 2px;
 }
-.profile__edit-button {
+.profile__edit-button:hover {
+  background: transparent url(../images/edit-icon-gray.svg) center no-repeat;
   border-color: #545454;
 }
 .profile__add-button {
@@ -48,6 +49,7 @@
   border-width: 2px;
 }
 .profile__add-button:hover {
+  background: transparent url(../images/add-icon-gray.svg) center no-repeat;
   border-color: #545454;
 }
 .profile__title {
