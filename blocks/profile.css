@@ -36,6 +36,9 @@
   border-color: white;
   border-width: 2px;
 }
+.profile__edit-button {
+  border-color: #545454;
+}
 .profile__add-button {
   background: transparent url(../images/add-icon.svg) center no-repeat;
   width: 150px;
@@ -43,6 +46,9 @@
   margin-left: auto;
   border-color: white;
   border-width: 2px;
+}
+.profile__add-button:hover {
+  border-color: #545454;
 }
 .profile__title {
   font-size: 42px;
