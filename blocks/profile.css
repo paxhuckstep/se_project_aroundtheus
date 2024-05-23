@@ -76,3 +76,30 @@
   background-position: center;
   margin-right: 24px;
 }
+@media screen and (max-width: 620px) {
+  .profile {
+    flex-direction: column;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .profile__description {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .profile__add-button {
+    margin: 30px 0 0 0;
+    width: 100%;
+  }
+  .profile__edit-button {
+    margin-left: 10px;
+  }
+}
+@media (min-width: 500px) and (max-width: 750px) {
+  .profile__add-button {
+    margin-left: 10px;
+  }
+}
