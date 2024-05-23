@@ -20,13 +20,15 @@
 .profile {
   display: flex;
   padding-top: 40px;
+  border-top: 1px solid #bbb;
 }
 .profile__info {
   display: grid;
   grid-template-areas:
     "title button"
-    "description description";
+    "description na";
   grid-template-columns: minmax(auto, 373px) auto;
+  align-items: center;
 }
 .profile__edit-button {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
