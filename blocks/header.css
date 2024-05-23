@@ -5,3 +5,6 @@
   width: 173px;
   height: 33px;
 }
+.header__title {
+  font-family: "Inter";
+}

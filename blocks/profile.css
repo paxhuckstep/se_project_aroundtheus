@@ -1,0 +1,17 @@
+.profile {
+  display: flex;
+}
+
+.profile__image {
+  border-radius: 300px;
+  width: 128px;
+  height: 128px;
+}
+.profile__edit-button {
+  width: 24px;
+  height: 24px;
+}
+.profile__add-button {
+  max-width: 150px;
+  height: 50px;
+}
