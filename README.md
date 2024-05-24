@@ -24,3 +24,7 @@ Good luck and have fun!
 VIDEOOOOOOOOO!!
 
 https://drive.google.com/file/d/1M5ly-jwqrJipEy5N2ezYRxa_2uHr2aF4/view?usp=sharing
+
+^^^^^^^^^^^^^
+Project Name: Around the US
+Project Description: An adaptive landing page used to show off pictures taken around the US. It uses HTML and CSS to create an attractive and functional landing page that is adaptive to work at multiple sizes.
