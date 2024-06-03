@@ -47,7 +47,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width:fit-content;
+  max-width: 70vw;
 }
 .profile__description {
   font-size: 18px;
