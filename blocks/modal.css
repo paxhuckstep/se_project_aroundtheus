@@ -1,5 +1,6 @@
 .modal {
-   /* display: none; */
+   /* display: none; ----------display: flex (is temp) */
+   display: flex; 
    position: fixed;
    top: 0;
    bottom: 0;
@@ -7,22 +8,49 @@
    right: 0;
    background-color: rgba(0, 0, 0, 0.5);
    z-index: 999;
-   display: flex;
    align-items: center;
    justify-content: center;
    padding: 0 20px;
 }
 /*.modal_opened{
-    display: flex; */
-}
+    display: flex; 
+} */
 .modal__container{
     background-color: white;
     padding: 36px;
     border-radius: 10px;
     position: relative;
+    width: 358px;
+    height: 258px;
 }
 .modal__heading{
     color: black;
+    line-height: 29px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    margin: 0;
+    padding-bottom: 52px;
+}
+.modal__form{
+
+}
+.modal__save{
+    width: 100%;
+    margin-top: 12px;
+    height: 50px;
+    justify-content: center;
+    color: #fff;
+    background-color: #000;
+    border: none;
+}
+.modal__input{
+    width: 100%;
+    margin: 0 0 30px;
+    height: 27px;
+    border: none;
+    color: #000;
+    border-bottom: 1px solid rgb(84 84 84 / .7);
 }
 .modal__close{
 
