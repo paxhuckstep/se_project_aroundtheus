@@ -1,5 +1,5 @@
-
-const initalCards = [{
+const initalCards = [
+    {
     title: 'Yosemite Valley',
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 }, {
@@ -22,5 +22,6 @@ const initalCards = [{
     title: 'Lago de Braies',
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 
-}];
-//console.log(initalCards);
+}
+];
+console.log(initalCards);
