@@ -68,6 +68,11 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: ____px){
-    
+@media screen and (max-width: 540px){
+    .modal__close {
+        width: 26px;
+        height: 26px;
+        left: calc(100% - 26px);
+        bottom: calc(100% + 13px);
+    }
 }
