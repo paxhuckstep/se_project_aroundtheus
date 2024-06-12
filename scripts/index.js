@@ -63,6 +63,8 @@ closeModal();
 function getCardElement(cardData){
     const cardElement = cardTemplate.cloneNode(true);
     const cardImageEl = cardElement.querySelector('.card__image');
+    cardImageEl.setAttribute('src',cardData.link);
+    cardImageEl.setAttribute('alt',cardData.name);
     const cardTitleEl = cardElement.querySelector('.card__title');
     cardTitleEl.textContent = cardData.name;
     return cardElement;
