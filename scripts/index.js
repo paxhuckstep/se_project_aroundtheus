@@ -24,30 +24,42 @@ const initialCards = [
 
 }
 ];
-//variables opening/closing modal
+//VARIABLES opening/closing modal
 const profileEditModal = document.querySelector('.modal');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const modalCloseButton = document.querySelector('.modal__close');
-//variables giving values on opening
+/////variables giving values on opening
 const profileTitle = document.querySelector('.profile__title');
-const profileDescrition = document.querySelector('.profile__description');
+const profileDescription = document.querySelector('.profile__description');
 const profileTitleInput = document.querySelector('#profile-title-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
+//////variables saving new values
+const profileEditForm = profileEditModal.querySelector('.modal__form');
 
 
-//functions
+//FUNCTIONS
 function openModal(){
 /////adding class so modal opens
 profileEditModal.classList.add('modal__opened')
 /////prefilling values on opening
 profileTitleInput.value = profileTitle.textContent;
-profileDescriptionInput.value = profileDescrition.textContent;
-}
-function closeModal(){
-//////removing class so modal hides    
-    profileEditModal.classList.remove('modal__opened')
+profileDescriptionInput.value = profileDescription.textContent;
 }
 
-//listeners
+function closeModal(){
+//////removing class so modal hides    
+    profileEditModal.classList.remove('modal__opened');
+}
+
+function submitModal(e){
+e.preventDefault();
+profileTitle.textContent = profileTitleInput.value;
+profileDescription.textContent = profileDescriptionInput.value;
+closeModal();
+}
+
+//LISTENERS  open / close
 profileEditButton.addEventListener('click', openModal);
-modalCloseButton.addEventListener('click', closeModal)
+modalCloseButton.addEventListener('click', closeModal);
+//////submission 
+profileEditForm.addEventListener('submit', submitModal);
