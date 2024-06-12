@@ -32,7 +32,7 @@
     padding-bottom: 52px;
 }
 .modal__form{
-
+border: none; /*Does nothing just prevents error messages*/
 }
 .modal__save{
     width: 100%;
