@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   padding-top: 40px;
-  border-top: 1px solid rgb(84 84 84 / .7);
+  border-top: 1px solid rgb(84 84 84 / 0.7);
   align-items: center;
 }
 .profile__info {
@@ -35,8 +35,8 @@
   border-style: solid;
 }
 .profile__add-button:hover {
- opacity: 0.6;
- cursor: pointer;
+  opacity: 0.6;
+  cursor: pointer;
 }
 .profile__title {
   font-size: 42px;
@@ -58,7 +58,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width:fit-content;
+  max-width: fit-content;
 }
 .profile__image {
   height: 120px;
@@ -107,10 +107,10 @@
   .profile__info {
     justify-content: center;
   }
-  .profile__image{
+  .profile__image {
     margin: 0 0 30px;
   }
-  .profile__description{
+  .profile__description {
     font-size: 14px;
     line-height: 17px;
     padding: 0 60px;

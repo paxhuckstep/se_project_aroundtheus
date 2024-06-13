@@ -1,3 +1,5 @@
-@media screen and (max-width:426px){
-.content{
-    border-top: 1px solid rgb(84 84 84 / .7);}}
+@media screen and (max-width: 426px) {
+  .content {
+    border-top: 1px solid rgb(84 84 84 / 0.7);
+  }
+}
