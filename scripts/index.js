@@ -42,22 +42,22 @@ const cardListEl = document.querySelector('.cards__list');
 //FUNCTIONS
 function openModal(){
 /////adding class so modal opens
-profileEditModal.classList.add('modal__opened')
+    profileEditModal.classList.add('modal_opened')
 /////prefilling values on opening
-profileTitleInput.value = profileTitle.textContent;
-profileDescriptionInput.value = profileDescription.textContent;
+    profileTitleInput.value = profileTitle.textContent;
+    profileDescriptionInput.value = profileDescription.textContent;
 }
 
 function closeModal(){
 //////removing class so modal hides    
-    profileEditModal.classList.remove('modal__opened');
+    profileEditModal.classList.remove('modal_opened');
 }
 
-function submitModal(e){
-e.preventDefault();
-profileTitle.textContent = profileTitleInput.value;
-profileDescription.textContent = profileDescriptionInput.value;
-closeModal();
+function submitProfileForm(e){
+    e.preventDefault();
+    profileTitle.textContent = profileTitleInput.value;
+    profileDescription.textContent = profileDescriptionInput.value;
+    closeModal();
 }
 
 function getCardElement(cardData){
@@ -74,11 +74,11 @@ function getCardElement(cardData){
 profileEditButton.addEventListener('click', openModal);
 modalCloseButton.addEventListener('click', closeModal);
 //////submission 
-profileEditForm.addEventListener('submit', submitModal);
+profileEditForm.addEventListener('submit', submitProfileForm);
 
 //CARD CODE
 initialCards.forEach((cardData) => {
-const cardElement = getCardElement(cardData);
-cardListEl.append(cardElement);
+    const cardElement = getCardElement(cardData);
+    cardListEl.append(cardElement);
 
 })
