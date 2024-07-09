@@ -83,6 +83,7 @@ function renderCard(cardData) {
       likeButton.classList.toggle("card__like-button_active");
     });
   });
+  setCardDeletion(cardElement);
 }
 
 function submitCardAdd(e) {
@@ -121,22 +122,23 @@ likeButtons.forEach((likeButton) => {
     likeButton.classList.toggle("card__like-button_active");
   });
 });
-const trashButtons = document.querySelectorAll(".card__trash-button");
-trashButtons.forEach((trashButton) => {
-  trashButton.addEventListener('click', () => {
 
+function setCardDeletion() {
+  const trashButtons = document.querySelectorAll(".card__trash-button");
+  trashButtons.forEach((trashButton) => {
+    trashButton.addEventListener("click", () => {
+      trashButton.classList.toggle("card__trash-button_delete");
+      const cardBye = document.querySelector(".card__trash-button_delete");
+      const cardsMaybeBye = document.querySelectorAll(".card");
+      cardsMaybeBye.forEach((cardMaybeBye) => {
+        if (
+          cardMaybeBye.querySelector(".card__trash-button_delete") === cardBye
+        ) {
+          cardMaybeBye.remove();
+        } 
+      });
+    });
+  });
+}
 
-    trashButton.classList.toggle("card__trash-button_delete")
-    const cardBye = document.querySelector(".card__trash-button_delete");
-  const cardsMaybeBye = document.querySelectorAll(".card");
-  cardsMaybeBye.forEach((cardMaybeBye) => {
-    if (cardMaybeBye.querySelector(".card__trash-button_delete") === cardBye) {
-console.log('delete' + cardMaybeBye);
-console.log(cardMaybeBye);
-cardMaybeBye.remove();
-    } else {
-      console.log('save')
-    }
-  })
-  }
-  )})
+setCardDeletion();
