@@ -53,3 +53,10 @@ background-image: url(../images/like-active.svg);
   height: 20px;
   border: none;
 }
+.card__trash-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.card__trash-button_delete{
+  background-color:aqua
+}
