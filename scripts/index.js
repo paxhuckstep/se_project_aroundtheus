@@ -133,7 +133,7 @@ trashButtons.forEach((trashButton) => {
     if (cardMaybeBye.querySelector(".card__trash-button_delete") === cardBye) {
 console.log('delete' + cardMaybeBye);
 console.log(cardMaybeBye);
-delete cardMaybeBye;
+cardMaybeBye.remove();
     } else {
       console.log('save')
     }
