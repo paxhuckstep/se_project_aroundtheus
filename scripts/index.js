@@ -78,21 +78,20 @@ function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
   const likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("card__like-button_active");
+    });
   });
-});
 }
 
 function submitCardAdd(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCard({name, link});
+  renderCard({ name, link });
   closeModal(cardAddModal);
 }
-
 
 //LISTENERS
 profileEditButton.addEventListener("click", () => {
@@ -116,4 +115,9 @@ initialCards.forEach((cardData) => {
   cardListEl.append(cardElement);
 });
 
-
+const likeButtons = document.querySelectorAll(".card__like-button");
+likeButtons.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+});
