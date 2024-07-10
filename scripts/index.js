@@ -142,3 +142,14 @@ function setCardDeletion() {
 }
 
 setCardDeletion();
+
+///// open picture modal
+const pictureModal = document.querySelector("#picture-modal");
+const cardButtons = document.querySelectorAll(".card__image");
+console.log(cardButtons);
+cardButtons.forEach((cardButton) => {
+  cardButton.addEventListener("click", openModal(pictureModal));
+  console.log(cardButton);
+  })
+pictureModalCloseButton = pictureModal.querySelector(".modal__close");
+pictureModalCloseButton.addEventListener("click", closeModal(pictureModal));
