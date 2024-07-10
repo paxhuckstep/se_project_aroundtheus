@@ -9,9 +9,9 @@
   width: 282px;
   height: 282px;
 }
-.card__image:hover{
+/*.card__image:hover{
   cursor: pointer;
-}
+}*/
 .card__title {
   max-width: 220px;
   font-size: 24px;
@@ -62,4 +62,13 @@ background-image: url(../images/like-active.svg);
 }
 .card__trash-button_delete{
   background-color:aqua
+}
+.card__image-button{
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+.card__image-button:hover{
+cursor: pointer;
 }
