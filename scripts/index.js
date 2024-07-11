@@ -31,6 +31,7 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModalCloseButton = profileEditModal.querySelector(".modal__close");
 const cardAddModalCloseButton = cardAddModal.querySelector(".modal__close");
+
 /////variables giving values on opening
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -46,6 +47,8 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 ////// variables with cards
 const cardListEl = document.querySelector(".cards__list");
+///// picture modal
+const pictureModal = document.querySelector("#picture-modal");
 
 //FUNCTIONS
 function openModal(modal) {
@@ -90,7 +93,14 @@ function handleLikeButton (event) {
   event.target.closest(".card").remove();
  }
 function handleImageButton (cardData) {
+  const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
+  const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
+  pictureModalImage.setAttribute("src", cardData.link);
+  pictureModalImage.setAttribute("alt", cardData.name);
+  pictureModalHeading.textContent = cardData.name;
   openModal(pictureModal);
+  const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
+  pictureModalCloseButton.addEventListener("click", () => closeModal(pictureModal));
 }
 
 
@@ -118,6 +128,7 @@ cardAddModalCloseButton.addEventListener("click", () =>
 );
 cardAddModal.addEventListener("submit", submitCardAdd);
 
+
 //CARD CODE
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
@@ -125,7 +136,5 @@ initialCards.forEach((cardData) => {
 });
 
 
-///// picture modal
-const pictureModal = document.querySelector("#picture-modal");
-pictureModalCloseButton = pictureModal.querySelector(".modal__close");
-pictureModalCloseButton.addEventListener("click", closeModal(pictureModal));
+
+
