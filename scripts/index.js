@@ -100,7 +100,7 @@ function handleImageButton (cardData) {
   pictureModalHeading.textContent = cardData.name;
   openModal(pictureModal);
   const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
-  pictureModalCloseButton.addEventListener("click", () => closeModal(pictureModal));
+  pictureModalCloseButton.addEventListener("click", closeModal(pictureModal));
 }
 
 
