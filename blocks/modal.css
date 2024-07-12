@@ -24,9 +24,10 @@
 }
 .modal__container_picture-modal{
 background-color: transparent;
+height: unset;
+width: unset;
 max-width: 75vw;
 max-height: 75vh;
-padding-bottom: 20px;
 }
 .modal__heading {
   color: black;
@@ -36,6 +37,9 @@ padding-bottom: 20px;
   font-size: 24px;
   margin: 0;
   padding-bottom: 52px;
+}
+.modal__heading_picture-modal{
+
 }
 .modal__form {
   border: none; /*Does nothing just prevents error messages*/
@@ -75,6 +79,11 @@ padding-bottom: 20px;
   opacity: 0.6;
 }
 
+.modal__image {
+  max-height: 75vh;
+  max-width: 75vw;
+  position: relative;
+}
 @media screen and (max-width: 540px) {
   .modal__close {
     width: 26px;
