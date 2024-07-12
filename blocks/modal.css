@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 1;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
@@ -23,10 +23,12 @@
   height: 258px;
 }
 .modal__container__picture-modal{
-background-color: aqua;
-position: relative;
+background-color: transparent;
+align-self: center;
+justify-self: center;
 max-width: 75vw;
 max-height: 75vh;
+padding-bottom: 20px;
 }
 .modal__heading {
   color: black;

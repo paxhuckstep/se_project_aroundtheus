@@ -92,16 +92,19 @@ function handleLikeButton (event) {
  function handleTrashButton (event) {
   event.target.closest(".card").remove();
  }
-function handleImageButton (cardData) {
+function handleImageButton (event) {
   const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
-  const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
-  pictureModalImage.setAttribute("src", cardData.link);
-  pictureModalImage.setAttribute("alt", cardData.name);
-  pictureModalHeading.textContent = cardData.name;
+  // const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
+  
+  console.log(event.target.closest(".card__image").src);
+  pictureModalImage.setAttribute("src", event.target.closest(".card__image").src);
+  // pictureModalImage.setAttribute("alt", "alt");
+  // pictureModalHeading.textContent = event.target.closest(".card__title");
   openModal(pictureModal);
-  const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
-  pictureModalCloseButton.addEventListener("click", closeModal(pictureModal));
+  
 }
+const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
+  pictureModalCloseButton.addEventListener("click", console.log("close"));
 
 
 function submitCardAdd(e) {
