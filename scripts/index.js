@@ -104,7 +104,7 @@ function handleImageButton (event) {
   
 }
 const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
-  pictureModalCloseButton.addEventListener("click", console.log("close"));
+  pictureModalCloseButton.addEventListener("click", () => closeModal(pictureModal));
 
 
 function submitCardAdd(e) {

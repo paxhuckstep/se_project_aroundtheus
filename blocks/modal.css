@@ -22,10 +22,8 @@
   width: 358px;
   height: 258px;
 }
-.modal__container__picture-modal{
+.modal__container_picture-modal{
 background-color: transparent;
-align-self: center;
-justify-self: center;
 max-width: 75vw;
 max-height: 75vh;
 padding-bottom: 20px;
