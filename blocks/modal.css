@@ -43,7 +43,7 @@ padding: 0;
 color: aqua;
 position: fixed;
 z-index: 1000;
-top: calc(100% - 110px);
+bottom: 30px;
 line-height: 15px;
 font-size: 12px;
 font-weight: 400px;

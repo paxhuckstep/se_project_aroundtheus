@@ -95,24 +95,16 @@ function handleTrashButton(event) {
 }
 function handleImageButton(event) {
   const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
-  const pictureModalHeading = pictureModal.querySelector(
-    "#picture-modal-heading"
-  );
-
+  const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
   console.log(pictureModalHeading);
-  console.log(event.target.closest(".card__title"));
-
-  pictureModalImage.setAttribute(
-    "src",
-    event.target.closest(".card__image").src
-  );
+  console.log(event.target.closest(".card__title")); // WHY IS THIS NULL???
+  pictureModalImage.setAttribute("src", event.target.closest(".card__image").src);
   // pictureModalImage.setAttribute("alt", "alt");
   pictureModalHeading.textContent = event.target.closest(".card__title");
   openModal(pictureModal);
 }
-const pictureModalCloseButton = pictureModal.querySelector(
-  "#picture-modal-close"
-);
+
+const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
 pictureModalCloseButton.addEventListener("click", () =>
   closeModal(pictureModal)
 );
