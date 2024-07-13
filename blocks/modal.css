@@ -28,6 +28,7 @@ height: unset;
 width: unset;
 max-width: 75vw;
 max-height: 75vh;
+padding: 0;
 }
 .modal__heading {
   color: black;
@@ -39,7 +40,13 @@ max-height: 75vh;
   padding-bottom: 52px;
 }
 .modal__heading_picture-modal{
-
+color: aqua;
+position: fixed;
+z-index: 1000;
+top: calc(100% - 110px);
+line-height: 15px;
+font-size: 12px;
+font-weight: 400px;
 }
 .modal__form {
   border: none; /*Does nothing just prevents error messages*/

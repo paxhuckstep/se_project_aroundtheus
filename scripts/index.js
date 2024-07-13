@@ -105,7 +105,7 @@ function handleImageButton (event) {
 }
 const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
   pictureModalCloseButton.addEventListener("click", () => closeModal(pictureModal));
-
+//^^^^ close modal only works as an arrow function here, otherwise it activates wtihout a click, idk y 
 
 function submitCardAdd(e) {
   e.preventDefault();
