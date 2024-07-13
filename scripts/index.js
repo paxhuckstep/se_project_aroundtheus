@@ -50,6 +50,8 @@ const cardTemplate =
 const cardListEl = document.querySelector(".cards__list");
 ///// picture modal
 const pictureModal = document.querySelector("#picture-modal");
+const pictureModalHeading = document.querySelector("#picture-modal-heading");
+const pictureModalImage = document.querySelector("#picture-modal-image");
 
 //FUNCTIONS
 function openModal(modal) {
@@ -78,8 +80,7 @@ function getCardElement(cardData) {
   likeButton.addEventListener("click", handleLikeButton);
   const trashButton = cardElement.querySelector(".card__trash-button");
   trashButton.addEventListener("click", handleTrashButton);
-  const imageButton = cardElement.querySelector(".card__image");
-  imageButton.addEventListener("click", handleImageButton);
+  cardImageEl.addEventListener("click", () => handleImageButton(cardData));
   return cardElement;
 }
 
@@ -93,21 +94,18 @@ function handleLikeButton(event) {
 function handleTrashButton(event) {
   event.target.closest(".card").remove();
 }
-function handleImageButton(event) {
-  const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
-  const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
-  console.log(pictureModalHeading);
-  console.log(event.target.closest(".card__title")); // WHY IS THIS NULL???
-  pictureModalImage.setAttribute("src", event.target.closest(".card__image").src);
-  // pictureModalImage.setAttribute("alt", "alt");
-  pictureModalHeading.textContent = event.target.closest(".card__title");
+function handleImageButton(cardData) {
   openModal(pictureModal);
+pictureModalImage.src = cardData.link;
+pictureModalHeading.textContent = cardData.name;
 }
-
-const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
-pictureModalCloseButton.addEventListener("click", () =>
-  closeModal(pictureModal)
+function handleClosePictureModal() {
+  closeModal(pictureModal);
+}
+const pictureModalCloseButton = pictureModal.querySelector(
+  "#picture-modal-close"
 );
+pictureModalCloseButton.addEventListener("click", handleClosePictureModal);
 //^^^^ close modal only works as an arrow function here, otherwise it activates wtihout a click, idk y
 
 function submitCardAdd(e) {
