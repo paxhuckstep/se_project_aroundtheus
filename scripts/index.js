@@ -29,7 +29,8 @@ const profileEditModal = document.querySelector("#edit-modal");
 const cardAddModal = document.querySelector("#card-add-modal");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileEditModalCloseButton = profileEditModal.querySelector(".modal__close");
+const profileEditModalCloseButton =
+  profileEditModal.querySelector(".modal__close");
 const cardAddModalCloseButton = cardAddModal.querySelector(".modal__close");
 
 /////variables giving values on opening
@@ -78,7 +79,7 @@ function getCardElement(cardData) {
   const trashButton = cardElement.querySelector(".card__trash-button");
   trashButton.addEventListener("click", handleTrashButton);
   const imageButton = cardElement.querySelector(".card__image");
-  imageButton.addEventListener("click", handleImageButton)
+  imageButton.addEventListener("click", handleImageButton);
   return cardElement;
 }
 
@@ -86,26 +87,36 @@ function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 }
-function handleLikeButton (event) {
+function handleLikeButton(event) {
   event.target.classList.toggle("card__like-button_active");
 }
- function handleTrashButton (event) {
+function handleTrashButton(event) {
   event.target.closest(".card").remove();
- }
-function handleImageButton (event) {
-  const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
-  // const pictureModalHeading = pictureModal.querySelector("#picture-modal-heading");
-  
-  console.log(event.target.closest(".card__image").src);
-  pictureModalImage.setAttribute("src", event.target.closest(".card__image").src);
-  // pictureModalImage.setAttribute("alt", "alt");
-  // pictureModalHeading.textContent = event.target.closest(".card__title");
-  openModal(pictureModal);
-  
 }
-const pictureModalCloseButton = pictureModal.querySelector("#picture-modal-close");
-  pictureModalCloseButton.addEventListener("click", () => closeModal(pictureModal));
-//^^^^ close modal only works as an arrow function here, otherwise it activates wtihout a click, idk y 
+function handleImageButton(event) {
+  const pictureModalImage = pictureModal.querySelector("#picture-modal-image");
+  const pictureModalHeading = pictureModal.querySelector(
+    "#picture-modal-heading"
+  );
+
+  console.log(pictureModalHeading);
+  console.log(event.target.closest(".card__title").textContent);
+
+  pictureModalImage.setAttribute(
+    "src",
+    event.target.closest(".card__image").src
+  );
+  // pictureModalImage.setAttribute("alt", "alt");
+  pictureModalHeading.textContent = event.target.closest(".card__title");
+  openModal(pictureModal);
+}
+const pictureModalCloseButton = pictureModal.querySelector(
+  "#picture-modal-close"
+);
+pictureModalCloseButton.addEventListener("click", () =>
+  closeModal(pictureModal)
+);
+//^^^^ close modal only works as an arrow function here, otherwise it activates wtihout a click, idk y
 
 function submitCardAdd(e) {
   e.preventDefault();
@@ -131,13 +142,8 @@ cardAddModalCloseButton.addEventListener("click", () =>
 );
 cardAddModal.addEventListener("submit", submitCardAdd);
 
-
 //CARD CODE
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 });
-
-
-
-
