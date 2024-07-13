@@ -100,7 +100,7 @@ function handleImageButton(event) {
   );
 
   console.log(pictureModalHeading);
-  console.log(event.target.closest(".card__title").textContent);
+  console.log(event.target.closest(".card__title"));
 
   pictureModalImage.setAttribute(
     "src",
