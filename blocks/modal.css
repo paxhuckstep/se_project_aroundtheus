@@ -40,13 +40,15 @@ padding: 0;
   padding-bottom: 52px;
 }
 .modal__heading_picture-modal{
-color: aqua;
-position: fixed;
+color: #fff;
+position: absolute;
+padding: 0;
+top: calc(100% + 10px); 
+right: calc(100% - 0); /* having "- 0" makes it work and idk y */
 z-index: 1000;
-bottom: 30px;
 line-height: 15px;
 font-size: 12px;
-font-weight: 400px;
+font-weight: 400;
 }
 .modal__form {
   border: none; /*Does nothing just prevents error messages*/
@@ -90,6 +92,7 @@ font-weight: 400px;
   max-height: 75vh;
   max-width: 75vw;
   position: relative;
+  
 }
 @media screen and (max-width: 540px) {
   .modal__close {

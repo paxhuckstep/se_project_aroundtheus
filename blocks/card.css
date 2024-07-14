@@ -60,10 +60,10 @@ background-image: url(../images/like-active.svg);
   opacity: 0.5;
   cursor: pointer;
 }
-.card__trash-button_delete{
+/* .card__trash-button_delete{
   background-color:aqua
-}
-.card__image-button{
+} */
+/* .card__image-button{
   border: none;
   margin: 0;
   padding: 0;
@@ -71,4 +71,4 @@ background-image: url(../images/like-active.svg);
 }
 .card__image-button:hover{
 cursor: pointer;
-}
+} */
