@@ -19,6 +19,10 @@
   visibility: visible;
   opacity: 1;
 }
+.modal_closed {
+  transition: visibility 1s, opacity 0.5s linear;
+  display: flex;
+}
 .modal__container {
   background-color: white;
   padding: 36px;

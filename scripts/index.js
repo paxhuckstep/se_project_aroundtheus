@@ -56,9 +56,11 @@ const pictureModalImage = document.querySelector("#picture-modal-image");
 //FUNCTIONS
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  modal.classList.remove("modal_closed")
 }
 
 function closeModal(modal) {
+  modal.classList.add("modal_closed")
   modal.classList.remove("modal_opened");
 }
 
