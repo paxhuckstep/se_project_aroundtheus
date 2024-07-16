@@ -56,11 +56,11 @@ const pictureModalImage = document.querySelector("#picture-modal-image");
 //FUNCTIONS
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  modal.classList.remove("modal_closed")
+  modal.classList.remove("modal_closed");
 }
 
 function closeModal(modal) {
-  modal.classList.add("modal_closed")
+  modal.classList.add("modal_closed");
   modal.classList.remove("modal_opened");
 }
 
@@ -80,6 +80,7 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", handleLikeButton);
+  //this was easier for me than having a forEach like button handler. and it should work with 100 like buttons just like the other way??
   const trashButton = cardElement.querySelector(".card__trash-button");
   trashButton.addEventListener("click", handleTrashButton);
   cardImageEl.addEventListener("click", () => handleImageButton(cardData));
@@ -98,8 +99,8 @@ function handleTrashButton(event) {
 }
 function handleImageButton(cardData) {
   openModal(pictureModal);
-pictureModalImage.src = cardData.link;
-pictureModalHeading.textContent = cardData.name;
+  pictureModalImage.src = cardData.link;
+  pictureModalHeading.textContent = cardData.name;
 }
 function handleClosePictureModal() {
   closeModal(pictureModal);
@@ -115,6 +116,8 @@ function submitCardAdd(e) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
+  cardTitleInput.value = null;
+  cardUrlInput.value = null;
   closeModal(cardAddModal);
 }
 
