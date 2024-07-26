@@ -1,8 +1,14 @@
 
 
 
-function setEventListeners() {
+function setEventListeners(formEl, options) {
+    const {inputSelector} = options;
+    const inputEls = [...(formEl.querySelectorAll(inputSelector))];
+    inputEls.forEach(inputEl => {
+        inputEl.addEventListener('input', (e) => {
 
+        });
+    });
 }
 
 
@@ -22,7 +28,7 @@ setEventListeners(formEl, options);
 
 const config = {    
     formSelector: ".modal__form", //FIX THE REST TO MATCH OUR CSS CLASS NAMES
-    inputSelector: ".popup__input",
+    inputSelector: ".modal__input",
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
