@@ -1,12 +1,24 @@
 
 
 
+function showInputError (formEl, inputEl, options) {
+    const ErrorMessageEl = document.querySelector()
+}
+
+function checkInputValidity(formEl, inputEl, options) {
+    if(!inputEl.validity.valid) {
+        showInputError(formEl, inputEl, options);
+    } else{
+        hideInputError(formEl, inputEl, options);
+    }
+}
+
 function setEventListeners(formEl, options) {
     const {inputSelector} = options;
     const inputEls = [...(formEl.querySelectorAll(inputSelector))];
     inputEls.forEach(inputEl => {
         inputEl.addEventListener('input', (e) => {
-
+            checkInputValidity(formEl, inputEl, options)
         });
     });
 }
