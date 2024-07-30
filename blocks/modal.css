@@ -66,6 +66,10 @@
   background-color: #000;
   border: none;
 }
+.modal__save_disabled {
+
+}
+
 .modal__input {
   width: 100%;
   margin: 0 0 30px;
@@ -74,6 +78,19 @@
   color: #000;
   border-bottom: 1px solid rgb(84 84 84 / 0.7);
 }
+
+.modal__input_type_error {
+
+}
+
+.modal__error {
+
+}
+
+.modal__error_visible {
+
+}
+
 .modal__close {
   background-image: url(../images/close-icon.svg);
   border: none;

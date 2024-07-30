@@ -69,7 +69,7 @@ const config = {
     formSelector: ".modal__form", //FIX THE REST TO MATCH OUR CSS CLASS NAMES
     inputSelector: ".modal__input",
     submitButtonSelector: ".modal__save",
-    inactiveButtonClass: "modal__button_disabled",
+    inactiveButtonClass: "modal__save_disabled",
     inputErrorClass: "modal__input_type_error",
     errorClass: "modal__error_visible"}
 
