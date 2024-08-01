@@ -67,7 +67,7 @@
   border: none;
 }
 .modal__save_disabled {
-
+color: aqua;
 }
 
 .modal__input {
@@ -80,7 +80,7 @@
 }
 
 .modal__input_type_error {
-
+  border-color: #ff0000;
 }
 
 .modal__error {
