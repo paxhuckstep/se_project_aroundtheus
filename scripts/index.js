@@ -55,7 +55,16 @@ const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
 //FUNCTIONS
 function openModal(modal) {
-  modal.classList.add("modal_opened");}
+  modal.classList.add("modal_opened");
+  console.log(modal.id);
+  console.log(modal.id + "-container");
+  let modalBackground = document.querySelector("#" + modal.id);
+  console.log(modalBackground);
+  modalBackground.addEventListener("click", () => console.log("click big"));
+  let modalForground = document.querySelector("#" + modal.id + "-container");
+  modalForground.addEventListener("click", () => console.log("little click"));
+  
+}
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
