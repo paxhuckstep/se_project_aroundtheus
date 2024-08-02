@@ -53,18 +53,35 @@ const pictureModal = document.querySelector("#picture-modal");
 const pictureModalHeading = document.querySelector("#picture-modal-heading");
 const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
+let foregroundClicked = false;
+let backgroundClicked = false;
 //FUNCTIONS
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  console.log(modal.id);
-  console.log(modal.id + "-container");
   let modalBackground = document.querySelector("#" + modal.id);
-  console.log(modalBackground);
-  modalBackground.addEventListener("click", () => console.log("click big"));
-  let modalForground = document.querySelector("#" + modal.id + "-container");
-  modalForground.addEventListener("click", () => console.log("little click"));
-  
+  modalBackground.addEventListener("click", handleBackgroundClick);
+  let modalForeground = document.querySelector("#" + modal.id + "-container");
+  modalForeground.addEventListener("click", handleForegroundClick);
 }
+
+function handleForegroundClick (){
+  foregroundClicked = true;
+  console.log("foreground clicked");
+  }
+
+function handleBackgroundClick (){
+ backgroundClicked = true;
+ console.log('background clicked');
+ if (!foregroundClicked && backgroundClicked) {
+  console.log("closed");
+} else {
+console.log("still open")
+backgroundClicked = false;
+foregroundClicked = false;
+}
+}
+
+
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -149,3 +166,8 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 });
+
+
+
+//const page = document.querySelector(".page");
+//page.addEventListener("click", () => console.log("foreground cliked?" + foregroundClicked + "..background cliked?" + backgroundClicked));
