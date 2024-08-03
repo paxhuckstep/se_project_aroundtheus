@@ -55,7 +55,8 @@ const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
 let foregroundClicked = false;
 let backgroundClicked = false;
-let modalIsOpen = false;
+let modalIsOpen = false; // WITHOUT THIS IT CLOSES THE MODAL AS SOON AS I OPEN IT :)
+
 //FUNCTIONS
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -66,27 +67,37 @@ function openModal(modal) {
   modalIsOpen = true;
 }
 
-function handleForegroundClick (){
+function handleForegroundClick() {
   foregroundClicked = true;
-  console.log("foreground clicked");
+  // console.log("foreground clicked");
+}
+
+function handleBackgroundClick() {
+  backgroundClicked = true;
+  //console.log('background clicked');
+  if (!foregroundClicked && backgroundClicked && modalIsOpen) {
+    //console.log("closed");
+    closeModal(pictureModal);
+    closeModal(cardAddModal);
+    closeModal(profileEditModal);
+  } else {
+    //console.log("still open")
+    backgroundClicked = false;
+    foregroundClicked = false;
   }
-
-function handleBackgroundClick (){
- backgroundClicked = true;
- console.log('background clicked');
- if (!foregroundClicked && backgroundClicked && modalIsOpen) {
-  console.log("closed");
-  closeModal(pictureModal);
-  closeModal(cardAddModal);
-  closeModal(profileEditModal);
-} else {
-console.log("still open")
-backgroundClicked = false;
-foregroundClicked = false;
-}
 }
 
+function handleModalKeydown(e) {
+  console.log("pressed");
+  if (e.key === "Escape") {
+    closeModal(pictureModal);
+    closeModal(cardAddModal);
+    closeModal(profileEditModal);
+  }
+}
 
+const page = document.querySelector(".page");
+page.addEventListener("keydown", handleModalKeydown);
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -172,8 +183,3 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 });
-
-
-
-//const page = document.querySelector(".page");
-//page.addEventListener("click", () => console.log("foreground cliked?" + foregroundClicked + "..background cliked?" + backgroundClicked));
