@@ -88,7 +88,7 @@ function handleBackgroundClick() {
 }
 
 function handleModalKeydown(e) {
-  console.log("pressed");
+ // console.log("pressed");
   if (e.key === "Escape") {
     closeModal(pictureModal);
     closeModal(cardAddModal);
