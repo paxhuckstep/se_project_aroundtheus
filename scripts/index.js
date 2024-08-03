@@ -55,6 +55,7 @@ const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
 let foregroundClicked = false;
 let backgroundClicked = false;
+let modalIsOpen = false;
 //FUNCTIONS
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -62,6 +63,7 @@ function openModal(modal) {
   modalBackground.addEventListener("click", handleBackgroundClick);
   let modalForeground = document.querySelector("#" + modal.id + "-container");
   modalForeground.addEventListener("click", handleForegroundClick);
+  modalIsOpen = true;
 }
 
 function handleForegroundClick (){
@@ -72,8 +74,11 @@ function handleForegroundClick (){
 function handleBackgroundClick (){
  backgroundClicked = true;
  console.log('background clicked');
- if (!foregroundClicked && backgroundClicked) {
+ if (!foregroundClicked && backgroundClicked && modalIsOpen) {
   console.log("closed");
+  closeModal(pictureModal);
+  closeModal(cardAddModal);
+  closeModal(profileEditModal);
 } else {
 console.log("still open")
 backgroundClicked = false;
@@ -85,6 +90,7 @@ foregroundClicked = false;
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  modalIsOpen = false;
 }
 
 function submitProfileForm(e) {
