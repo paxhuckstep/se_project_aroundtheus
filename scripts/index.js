@@ -53,55 +53,38 @@ const pictureModal = document.querySelector("#picture-modal");
 const pictureModalHeading = document.querySelector("#picture-modal-heading");
 const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
-let foregroundClicked = false;
-let backgroundClicked = false;
-let modalIsOpen = false; // WITHOUT THIS IT CLOSES THE MODAL AS SOON AS I OPEN IT :)
 
 //FUNCTIONS
+
+const modals = document.querySelectorAll(".modal");
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("modal_opened") ||
+      evt.target.classList.contains("modal__close")
+    ) {
+      closeModal(modal);
+    }
+  });
+});
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  let modalBackground = document.querySelector("#" + modal.id);
-  modalBackground.addEventListener("click", handleBackgroundClick);
-  let modalForeground = document.querySelector("#" + modal.id + "-container");
-  modalForeground.addEventListener("click", handleForegroundClick);
-  modalIsOpen = true;
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
-function handleForegroundClick() {
-  foregroundClicked = true;
-  // console.log("foreground clicked");
-}
-
-function handleBackgroundClick() {
-  backgroundClicked = true;
-  //console.log('background clicked');
-  if (!foregroundClicked && backgroundClicked && modalIsOpen) {
-    //console.log("closed");
-    closeModal(pictureModal);
-    closeModal(cardAddModal);
-    closeModal(profileEditModal);
-  } else {
-    //console.log("still open")
-    backgroundClicked = false;
-    foregroundClicked = false;
-  }
-}
-
-function handleModalKeydown(e) {
- // console.log("pressed");
+function handleEscapeKey(e) {
+  // console.log("pressed");
+  const currentOpenModal = document.querySelector(".modal_opened");
   if (e.key === "Escape") {
-    closeModal(pictureModal);
-    closeModal(cardAddModal);
-    closeModal(profileEditModal);
+    closeModal(currentOpenModal);
   }
 }
-
-const page = document.querySelector(".page");
-page.addEventListener("keydown", handleModalKeydown);
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  modalIsOpen = false;
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 function submitProfileForm(e) {
@@ -182,4 +165,8 @@ addCardForm.addEventListener("submit", submitCardAdd);
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
+});
+
+document.addEventListener("click", (event) => {
+  console.log(event.target);
 });
