@@ -75,9 +75,8 @@ function openModal(modal) {
 }
 
 function handleEscapeKey(e) {
-  // console.log("pressed");
-  const currentOpenModal = document.querySelector(".modal_opened");
   if (e.key === "Escape") {
+    const currentOpenModal = document.querySelector(".modal_opened");
     closeModal(currentOpenModal);
   }
 }
@@ -132,8 +131,6 @@ function handleClosePictureModal() {
 const pictureModalCloseButton = pictureModal.querySelector(
   "#picture-modal-close"
 );
-pictureModalCloseButton.addEventListener("click", handleClosePictureModal);
-//^^^^ close modal only works as an arrow function here, otherwise it activates wtihout a click, idk y
 
 function submitCardAdd(e) {
   e.preventDefault();
@@ -154,19 +151,11 @@ profileEditButton.addEventListener("click", () => {
 profileEditModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
-profileEditForm.addEventListener("submit", submitProfileForm);
 addNewCardButton.addEventListener("click", () => openModal(cardAddModal));
-cardAddModalCloseButton.addEventListener("click", () =>
-  closeModal(cardAddModal)
-);
 addCardForm.addEventListener("submit", submitCardAdd);
 
 //CARD CODE
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
-});
-
-document.addEventListener("click", (event) => {
-  console.log(event.target);
 });
