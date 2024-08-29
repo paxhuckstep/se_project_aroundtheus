@@ -66,6 +66,11 @@ modals.forEach((modal) => {
     ) {
       closeModal(modal);
     }
+    if (
+      evt.target.classList.contains("modal__save")
+    ) {
+      submitProfileForm(modal);
+    }
   });
 });
 
@@ -87,7 +92,7 @@ function closeModal(modal) {
 }
 
 function submitProfileForm(e) {
-  e.preventDefault();
+ // e.preventDefault(e);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
