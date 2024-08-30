@@ -91,7 +91,7 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscapeKey);
 }
 
-function submitProfileForm(e) {
+function submitProfileForm() {
  // e.preventDefault(e);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
