@@ -1,3 +1,5 @@
+import Card from "..components/Card.js"
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +26,17 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+}
+
+const card = new Card(cardData, "#card-template");
+card.getView();
+
+
+
 //VARIABLES opening/closing modal
 const profileEditModal = document.querySelector("#edit-modal");
 const cardAddModal = document.querySelector("#card-add-modal");
@@ -104,7 +117,6 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", handleLikeButton);
-  //this was easier for me than having a forEach like button handler. and it should work with 100 like buttons just like the other way??
   const trashButton = cardElement.querySelector(".card__trash-button");
   trashButton.addEventListener("click", handleTrashButton);
   cardImageEl.addEventListener("click", () => handleImageButton(cardData));
