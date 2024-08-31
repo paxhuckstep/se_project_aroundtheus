@@ -7,11 +7,26 @@ export default class Card {
 
   _setEventListeners() {
     //".card__like-button"
-    const likeButton = this._cardElement.querySelector(".card__like-button");
+    this._cardElement
+    .querySelector(".card__like-button")
+    .addEventListener('click', () => {
+        this._handleLikeIcon();
+    });
     //".card__trash-button"
-    const trashButton = this._cardElement.querySelector(
-        ".card__trash-button"
-    );
+    this._cardElement
+    .querySelector(".card__trash-button")
+    .addEventListener('click', () => {
+        this._handletrashButton();
+    })
+  }
+  _handletrashButton () {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
+
+  _handleLikeIcon () {
+    this._cardElement.querySelector('.card__like-buton').classList.toggle('card__like-button+active');
   }
 
   getView() {
