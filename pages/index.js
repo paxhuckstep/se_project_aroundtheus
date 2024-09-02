@@ -1,4 +1,4 @@
-import Card from "..components/Card.js"
+import Card from "../components/Card.js"
 
 const initialCards = [
   {
@@ -32,8 +32,7 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 }
 
-const card = new Card(cardData, "#card-template");
-card.getView();
+
 
 
 
@@ -124,8 +123,9 @@ function getCardElement(cardData) {
 }
 
 function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template");
   cardListEl.prepend(cardElement);
+card.getView();
 }
 function handleLikeButton(event) {
   event.target.classList.toggle("card__like-button_active");
