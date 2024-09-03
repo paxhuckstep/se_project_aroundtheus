@@ -1,3 +1,5 @@
+export default FormValidator;
+
 class FormValidator {
 
     constructor(settings, formElement) {
@@ -14,11 +16,10 @@ class FormValidator {
         const ErrorMessageEl = this._form.querySelector("#" + inputEl.id + "-error");
         inputEl.classList.add(inputErrorClass);
         ErrorMessageEl.textContent = inputEl.validationMessage;
-        ErrorMessageEl.classList.add(errorClass);
+        ErrorMessageEl.classList.add(this._errorClass);
     }
 
 
-//wtf do I do for toggleButtonState ??
     _toggleButtonState (inputList, ButtonElement, inactiveButtonClass) {
         if(hasInvalidInput(inputList)) {
             ButtonElement.classList.add(inactiveButtonClass);
