@@ -5,11 +5,11 @@ export default class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
-
     this._form = formElement;
   }
 
   _showInputError(inputEl) {
+    console.log(inputEl.validationMessage);
     const ErrorMessageEl = this._form.querySelector(
       "#" + inputEl.id + "-error"
     );
@@ -56,8 +56,11 @@ export default class FormValidator {
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
 
     this._inputList.forEach((inputElement) => {
-      this._checkInputValidity(inputElement);
-      this._toggleButtonState();
+      // listen for input 
+      inputElement.addEventListener("input", () => {
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState();
+      })
     });
   }
 

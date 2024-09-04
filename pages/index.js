@@ -31,11 +31,7 @@ const initialCards = [
 const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-}
-
-
-
-
+};
 
 //VARIABLES opening/closing modal
 const profileEditModal = document.querySelector("#edit-modal");
@@ -82,7 +78,7 @@ modals.forEach((modal) => {
   });
 });
 
-profileEditForm.addEventListener("submit", submitProfileForm)
+profileEditForm.addEventListener("submit", submitProfileForm);
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -102,7 +98,7 @@ function closeModal(modal) {
 }
 
 function submitProfileForm() {
- // e.preventDefault(e);
+  // e.preventDefault(e);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
@@ -126,7 +122,7 @@ function getCardElement(cardData) {
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template");
   cardListEl.prepend(cardElement);
-card.getView();
+  card.getView();
 }
 function handleLikeButton(event) {
   event.target.classList.toggle("card__like-button_active");
@@ -181,7 +177,7 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormValidator = new FormValidator(settings, profileEditForm);
+const editFormValidator = new FormValidator(settings, profileEditModal);
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addCardForm);
