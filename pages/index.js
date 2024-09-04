@@ -104,25 +104,25 @@ function submitProfileForm() {
   closeModal(profileEditModal);
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  cardImageEl.setAttribute("src", cardData.link);
-  cardImageEl.setAttribute("alt", cardData.name);
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  cardTitleEl.textContent = cardData.name;
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", handleLikeButton);
-  const trashButton = cardElement.querySelector(".card__trash-button");
-  trashButton.addEventListener("click", handleTrashButton);
-  cardImageEl.addEventListener("click", () => handleImageButton(cardData));
-  return cardElement;
-}
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImageEl = cardElement.querySelector(".card__image");
+//   cardImageEl.setAttribute("src", cardData.link);
+//   cardImageEl.setAttribute("alt", cardData.name);
+//   const cardTitleEl = cardElement.querySelector(".card__title");
+//   cardTitleEl.textContent = cardData.name;
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   likeButton.addEventListener("click", handleLikeButton);
+//   const trashButton = cardElement.querySelector(".card__trash-button");
+//   trashButton.addEventListener("click", handleTrashButton);
+//   cardImageEl.addEventListener("click", () => handleImageButton(cardData));
+//   return cardElement;
+// }
 
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template", handleImageButton);
+  const cardElement = card.getView();
   cardListEl.prepend(cardElement);
-  card.getView();
 }
 function handleLikeButton(event) {
   event.target.classList.toggle("card__like-button_active");
@@ -164,8 +164,7 @@ addCardForm.addEventListener("submit", submitCardAdd);
 
 //CARD CODE
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.append(cardElement);
+  renderCard(cardData);
 });
 
 const settings = {
