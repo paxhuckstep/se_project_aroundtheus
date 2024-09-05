@@ -31,14 +31,14 @@ export default class Card {
 
   getView() {
     this._cardElement = document
-      .querySelector(this._cardSelector) //CONTINUED
+      .querySelector(this._cardSelector) 
       .content.querySelector(".card")
       .cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardTitle = this._cardElement.querySelector(".card__title");
-    this._cardLikeButton = this._cardElement //CONTINUED
+    this._cardLikeButton = this._cardElement 
       .querySelector(".card__like-button");
-    this._cardTrashButton = this._cardElement //CONTINUED
+    this._cardTrashButton = this._cardElement 
       .querySelector(".card__trash-button");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
