@@ -25,29 +25,25 @@ export default class Card {
 
   _handleLikeIcon() {
     this._cardElement
-      .querySelector(".card__like-buton")
-      .classList.toggle("card__like-button+active");
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
   }
 
   getView() {
     this._cardElement = document
-      .querySelector(this._cardSelector)
+      .querySelector(this._cardSelector) //CONTINUED
       .content.querySelector(".card")
       .cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardTitle = this._cardElement.querySelector(".card__title");
-    this._cardLikeButton =
-      this._cardElement.querySelector(".card__like-button");
-    this._cardTrashButton = this._cardElement.querySelector(
-      ".card__trash-button"
-    );
+    this._cardLikeButton = this._cardElement //CONTINUED
+      .querySelector(".card__like-button");
+    this._cardTrashButton = this._cardElement //CONTINUED
+      .querySelector(".card__trash-button");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
     this._setEventListeners();
     return this._cardElement;
-    // get card view
-    // set event listeners
-    // return the card
   }
 }
