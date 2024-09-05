@@ -7,16 +7,13 @@ export default class Card {
   }
 
   _setEventListeners() {
-    //".card__like-button"
     this._cardLikeButton.addEventListener("click", () => {
       this._handleLikeIcon();
     });
-    //".card__trash-button"
     this._cardTrashButton.addEventListener("click", () => {
       this._handletrashButton();
     });
     this._cardImage.addEventListener("click", () => {
-      console.log(this);
       this._handleImageClick({ name: this._name, link: this._link });
     });
   }
@@ -51,7 +48,6 @@ export default class Card {
     return this._cardElement;
     // get card view
     // set event listeners
-    this._setEventListeners();
     // return the card
   }
 }

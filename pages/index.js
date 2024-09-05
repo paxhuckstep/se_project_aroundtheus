@@ -38,33 +38,19 @@ const profileEditModal = document.querySelector("#edit-modal");
 const cardAddModal = document.querySelector("#card-add-modal");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileEditModalCloseButton =
-  profileEditModal.querySelector(".modal__close");
-const cardAddModalCloseButton = cardAddModal.querySelector(".modal__close");
-
-/////variables giving values on opening
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
+const profileDescriptionInput = document.querySelector("#profile-description-input");
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-url-input");
-//////variables saving new values
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-////// variables with cards
+//const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
-///// picture modal
 const pictureModal = document.querySelector("#picture-modal");
 const pictureModalHeading = document.querySelector("#picture-modal-heading");
 const pictureModalImage = document.querySelector("#picture-modal-image");
 const addCardForm = document.querySelector("#add-card-form");
-
-//FUNCTIONS
-
 const modals = document.querySelectorAll(".modal");
 
 modals.forEach((modal) => {
@@ -124,24 +110,24 @@ function renderCard(cardData) {
   const cardElement = card.getView();
   cardListEl.prepend(cardElement);
 }
-function handleLikeButton(event) {
-  event.target.classList.toggle("card__like-button_active");
-}
-function handleTrashButton(event) {
-  event.target.closest(".card").remove();
-}
+// function handleLikeButton(event) {
+//   event.target.classList.toggle("card__like-button_active");
+// }
+// function handleTrashButton(event) {
+//   event.target.closest(".card").remove();
+// }
 function handleImageButton(cardData) {
   openModal(pictureModal);
   pictureModalImage.src = cardData.link;
   pictureModalImage.alt = cardData.name;
   pictureModalHeading.textContent = cardData.name;
 }
-function handleClosePictureModal() {
-  closeModal(pictureModal);
-}
-const pictureModalCloseButton = pictureModal.querySelector(
-  "#picture-modal-close"
-);
+// function handleClosePictureModal() {
+//   closeModal(pictureModal);
+// }
+// const pictureModalCloseButton = pictureModal.querySelector(
+//   "#picture-modal-close"
+// );
 
 function submitCardAdd(e) {
   e.preventDefault();
