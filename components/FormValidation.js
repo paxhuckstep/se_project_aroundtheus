@@ -18,7 +18,7 @@ export default class FormValidator {
   }
 
   _removeInputError(inputEl) {
-    const ErrorMessageEl = this._form.querySelector(
+    const errorMessageEl = this._form.querySelector(
       "#" + inputEl.id + "-error"
     );
     inputEl.classList.remove(this._inputErrorClass);
@@ -53,7 +53,7 @@ export default class FormValidator {
       this._form.querySelectorAll(this._inputSelector)
     );
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
