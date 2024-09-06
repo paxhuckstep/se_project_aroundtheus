@@ -9,12 +9,12 @@ export default class FormValidator {
   }
 
   _showInputError(inputEl) {
-    const ErrorMessageEl = this._form.querySelector(
+    const errorMessageEl = this._form.querySelector(
       "#" + inputEl.id + "-error"
     );
     inputEl.classList.add(this._inputErrorClass);
-    ErrorMessageEl.textContent = inputEl.validationMessage;
-    ErrorMessageEl.classList.add(this._errorClass);
+    errorMessageEl.textContent = inputEl.validationMessage;
+    errorMessageEl.classList.add(this._errorClass);
   }
 
   _removeInputError(inputEl) {
@@ -22,8 +22,8 @@ export default class FormValidator {
       "#" + inputEl.id + "-error"
     );
     inputEl.classList.remove(this._inputErrorClass);
-    ErrorMessageEl.textContent = "";
-    ErrorMessageEl.classList.remove(this._errorClass);
+    errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(this._errorClass);
   }
 
   _toggleButtonState() {
@@ -63,7 +63,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    this._form.addEventListener("Submit", (e) => {
+    this._form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
     this._setEventListeners();
