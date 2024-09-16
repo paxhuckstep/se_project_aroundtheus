@@ -143,14 +143,14 @@ function submitCardAdd(e) {
 
 //LISTENERS
 profileEditButton.addEventListener("click", () => {
+  editFormValidator.resetValidation();
   openModal(profileEditModal);
-  resetValidation(profileEditModal);
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 });
 addNewCardButton.addEventListener("click", () => {
-  openModal(cardAddModal)
-  resetValidation(cardAddModal)
+  addFormValidator.resetValidation();
+  openModal(cardAddModal);
 });
 addCardForm.addEventListener("submit", submitCardAdd);
 
