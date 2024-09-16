@@ -107,29 +107,25 @@ function submitProfileForm(e) {
 //   return cardElement;
 // }
 
+function createCard (cardData) {
+  const cardElement = new Card(cardData, "#card-template", handleImageButton);
+  return cardElement.getView();
+}
+
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageButton);
-  const cardElement = card.getView();
+  // const card = new Card(cardData, "#card-template", handleImageButton);
+  // const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
-// function handleLikeButton(event) {
-//   event.target.classList.toggle("card__like-button_active");
-// }
-// function handleTrashButton(event) {
-//   event.target.closest(".card").remove();
-// }
+
 function handleImageButton(cardData) {
   openModal(pictureModal);
   pictureModalImage.src = cardData.link;
   pictureModalImage.alt = cardData.name;
   pictureModalHeading.textContent = cardData.name;
 }
-// function handleClosePictureModal() {
-//   closeModal(pictureModal);
-// }
-// const pictureModalCloseButton = pictureModal.querySelector(
-//   "#picture-modal-close"
-// );
+
 
 function submitCardAdd(e) {
   e.preventDefault();
