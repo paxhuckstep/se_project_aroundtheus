@@ -144,10 +144,14 @@ function submitCardAdd(e) {
 //LISTENERS
 profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
+  resetValidation(profileEditModal);
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 });
-addNewCardButton.addEventListener("click", () => openModal(cardAddModal));
+addNewCardButton.addEventListener("click", () => {
+  openModal(cardAddModal)
+  resetValidation(cardAddModal)
+});
 addCardForm.addEventListener("submit", submitCardAdd);
 
 //CARD CODE
