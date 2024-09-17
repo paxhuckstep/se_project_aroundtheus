@@ -1,3 +1,4 @@
+//it is named Card.js, should it be CARD.js ???
 export default class Card {
   constructor(cardData, cardSelector, handleImageClick) {
     this._name = cardData.name;
@@ -47,3 +48,4 @@ export default class Card {
     return this._cardElement;
   }
 }
+

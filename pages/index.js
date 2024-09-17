@@ -134,10 +134,11 @@ function submitCardAdd(e) {
   renderCard({ name, link });
   cardTitleInput.value = "";
   cardUrlInput.value = "";
+  addFormValidator.resetValidation();
   closeModal(cardAddModal);
 }
 
-//LISTENERS
+//LISTENER
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   openModal(profileEditModal);
