@@ -168,3 +168,9 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
+
+const newCardPopup = new PopupWithForm('#card-add-modal', () => {});
+newCardPopup.open();
+
+
+newCardPopup.close();
