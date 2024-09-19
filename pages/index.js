@@ -145,7 +145,6 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
 });
 addNewCardButton.addEventListener("click", () => {
- // addFormValidator.resetValidation(); ----- so is this just not needed? Review was confusing ----
   openModal(cardAddModal);
 });
 addCardForm.addEventListener("submit", submitCardAdd);
