@@ -1,25 +1,22 @@
 export default class Section {
-    constructor({ items, render}, cssSelector ) {
+    constructor({ items, renderer}, cssSelector ) {
         //item array
+        this._items = items;
+        this._renderer = renderer;
+        this.cardListEl = document.querySelector(cssSelector);
         //render function
         //CSS Selector for adding card elements
     }
 
 
     renderItems() {
-        //renders all elements by..
-        //itterates through item array
-        //calls render() on each itteration
-        // is called once on page load
+    this._items.forEach(item => {
+        this._renderer(item);
+    });
     }
 
-    addItem() {
-        //takes DOM element and adds it to container
-        //is called when adding an individual item
+    addItem(item) {
+        this.cardListEl.prepend(item)
     }
 
-    render() {
-        //will be called repeatedly in renderItems
-        //probably called in addItem too
-    }
 }
