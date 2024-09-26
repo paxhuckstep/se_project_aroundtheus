@@ -12,11 +12,15 @@ open() {
 
 close () {
     //closes popup
-    this._popup
+    this.classList.remove("modal_opened");
+    this.removeEventListener("keydown,", _handleEscClose)
 }
 
-_handleEscClose () {
+_handleEscClose (e) {
     //listens to esc button
+    if (e.key === "Escape") {
+        this.close()
+    }
 }
 
 setEventListeners () {

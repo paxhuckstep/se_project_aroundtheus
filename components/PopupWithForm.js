@@ -7,9 +7,11 @@ class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit;
     }
 
+
+
     close() {
         this._popupForm.reset();
-        super.close()
+        super.close(); //is this not calling itself ??
     }
 
 }

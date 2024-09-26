@@ -85,10 +85,10 @@ function handleEscapeKey(e) {
   }
 }
 
-//turns into close() in Popup.js ???
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscapeKey);
+// //put into close() in Popup.js ???
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
+//   document.removeEventListener("keydown", handleEscapeKey);
 }
 // this goes to PopupWithForm.js ??
 function submitProfileForm(e) {
@@ -159,7 +159,9 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const newCardPopup = new PopupWithForm('#card-add-modal', () => {});
+const newCardPopup = new PopupWithForm('#card-add-modal', () => { /* submitCardAdd ?? */ });
+
+const EditProfilePopup = new Popup('#edit-modal')
 
 
 //don't these go inside the anonomous function?? at least open? 
