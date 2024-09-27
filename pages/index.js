@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidation.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 
 const initialCards = [
@@ -91,12 +92,12 @@ const modals = document.querySelectorAll(".modal");
 //   document.removeEventListener("keydown", handleEscapeKey);
 //}
 // this goes to PopupWithForm.js ??
-// function submitProfileForm(e) {
-//   e.preventDefault(e);
-//   profileTitle.textContent = profileTitleInput.value;
-//   profileDescription.textContent = profileDescriptionInput.value;
-//   closeModal(profileEditModal);
-// }
+function submitProfileForm(e) {
+  e.preventDefault(e);
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closeModal(profileEditModal);
+}
 
 
 // this stays in index.js ???
@@ -122,15 +123,15 @@ function handleImageButton(cardData) {
 }
 
 // This Goes to PopupWithForm.js??
-// function submitCardAdd(e) {
-//   e.preventDefault();
-//   const name = cardTitleInput.value;
-//   const link = cardUrlInput.value;
-//   renderCard({ name, link });
-//   e.target.reset();
-//   addFormValidator.disableButton();
-//   closeModal(cardAddModal);
-// }
+function submitCardAdd(e) {
+  e.preventDefault();
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({ name, link });
+  e.target.reset();
+  addFormValidator.disableButton();
+  closeModal(cardAddModal);
+}
 
 //LISTENER This stays but logic comes from PopupWithForm.js ??
 profileEditButton.addEventListener("click", () => {
@@ -159,9 +160,9 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const newCardPopup = new PopupWithForm('#card-add-modal', () => { /* submitCardAdd ?? */ });
+const newCardPopup = new PopupWithForm('#card-add-modal', submitCardAdd);
 
-const EditProfilePopup = new Popup('#edit-modal')
+const EditProfilePopup = new PopupWithForm('#edit-modal', submitProfileForm);
 
 
 //don't these go inside the anonomous function?? at least open? 

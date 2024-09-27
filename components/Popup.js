@@ -1,39 +1,42 @@
 export default class Popup {
     constructor({ popupSelector }){
-    this._popup = popupSelector;
-    this._popupElement = document.querySelector(this._popupSelector);
+    this._popupElement = document.querySelector(popupSelector);
 }
 
-open() {
+openPopup() {
     // open popup (whats a modal vs popup?)
-    this._popup.classList.add("modal_opened");
-    document.addEventListener("keydown", _handleEscClose);
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keydown", this._handleEscClose);
 }
 
 closePopup () {
     //closes popup
-    this.classList.remove("modal_opened");
-    this.removeEventListener("keydown,", _handleEscClose)
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("keydown,", this._handleEscClose);
 }
 
 _handleEscClose (e) {
     //listens to esc button
     if (e.key === "Escape") {
-        this.close()
+        this.closePopup()
     }
 }
 
 setEventListeners () {
     // different from setEventListeners in FormValidation???
-    modals.forEach((modal) => {
-        modal.addEventListener("mousedown", (evt) => {
+    
+        this._popupElement.addEventListener("mousedown", (evt) => {
           if (
             evt.target.classList.contains("modal_opened") ||
             evt.target.classList.contains("modal__close")
           ) {
-            closeModal(modal);
+            this.closePopup();
           }
         });
-      });
-      profileEditForm.addEventListener("submit", submitProfileForm);
+       
+      };
+    
+    
     }
+
+
