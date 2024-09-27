@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-class PopupWithForm extends Popup {
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
@@ -18,11 +18,7 @@ class PopupWithForm extends Popup {
 
   closePopupWithForm() {
     this._popupForm.reset();
-    super.closePopup(); //is this not calling itself ??
+    super.closePopup(); 
   }
-
-  //   profileEditForm.addEventListener("submit", submitProfileForm);
 }
-
-export default PopupWithForm;
 
