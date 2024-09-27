@@ -14,5 +14,22 @@ class PopupWithForm extends Popup {
         super.close(); //is this not calling itself ??
     }
 
+    submitCardAddPopup(e) {
+        e.preventDefault();
+        const name = cardTitleInput.value;
+        const link = cardUrlInput.value;
+        renderCard({ name, link });
+        e.target.reset();
+        addFormValidator.disableButton();
+        closeModal(cardAddModal);
+      }
+
+      submitProfileForm(e) {
+        e.preventDefault(e);
+        profileTitle.textContent = profileTitleInput.value;
+        profileDescription.textContent = profileDescriptionInput.value;
+        closeModal(profileEditModal);
+      }
+
 }
 

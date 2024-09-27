@@ -57,46 +57,46 @@ const addCardForm = document.querySelector("#add-card-form");
 const modals = document.querySelectorAll(".modal");
 
 // this stay but closeModal becomes close() from Popup.js ?
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (
-      evt.target.classList.contains("modal_opened") ||
-      evt.target.classList.contains("modal__close")
-    ) {
-      closeModal(modal);
-    }
-  });
-});
+// modals.forEach((modal) => {
+//   modal.addEventListener("mousedown", (evt) => {
+//     if (
+//       evt.target.classList.contains("modal_opened") ||
+//       evt.target.classList.contains("modal__close")
+//     ) {
+//       closeModal(modal);
+//     }
+//   });
+// });
 // stays in index.js ???
-profileEditForm.addEventListener("submit", submitProfileForm);
+// profileEditForm.addEventListener("submit", submitProfileForm);
 
 
 // turns into open() in Popup.js ??
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscapeKey);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscapeKey);
+// }
 
 // turns into handleEscClose() in Popup.js ???
-function handleEscapeKey(e) {
-  if (e.key === "Escape") {
-    const currentOpenModal = document.querySelector(".modal_opened");
-    closeModal(currentOpenModal);
-  }
-}
+// function handleEscapeKey(e) {
+//   if (e.key === "Escape") {
+//     const currentOpenModal = document.querySelector(".modal_opened");
+//     closeModal(currentOpenModal);
+//   }
+// }
 
 // //put into close() in Popup.js ???
 // function closeModal(modal) {
 //   modal.classList.remove("modal_opened");
 //   document.removeEventListener("keydown", handleEscapeKey);
-}
+//}
 // this goes to PopupWithForm.js ??
-function submitProfileForm(e) {
-  e.preventDefault(e);
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
-}
+// function submitProfileForm(e) {
+//   e.preventDefault(e);
+//   profileTitle.textContent = profileTitleInput.value;
+//   profileDescription.textContent = profileDescriptionInput.value;
+//   closeModal(profileEditModal);
+// }
 
 
 // this stays in index.js ???
@@ -113,7 +113,7 @@ function renderCard(cardData) {
 }
 
 cardSection.renderItems();
-//This goes to Popup ??
+//This goes to Popup
 function handleImageButton(cardData) {
   openModal(pictureModal);
   pictureModalImage.src = cardData.link;
@@ -122,15 +122,15 @@ function handleImageButton(cardData) {
 }
 
 // This Goes to PopupWithForm.js??
-function submitCardAdd(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link });
-  e.target.reset();
-  addFormValidator.disableButton();
-  closeModal(cardAddModal);
-}
+// function submitCardAdd(e) {
+//   e.preventDefault();
+//   const name = cardTitleInput.value;
+//   const link = cardUrlInput.value;
+//   renderCard({ name, link });
+//   e.target.reset();
+//   addFormValidator.disableButton();
+//   closeModal(cardAddModal);
+// }
 
 //LISTENER This stays but logic comes from PopupWithForm.js ??
 profileEditButton.addEventListener("click", () => {

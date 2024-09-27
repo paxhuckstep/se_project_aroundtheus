@@ -10,7 +10,7 @@ open() {
     document.addEventListener("keydown", _handleEscClose);
 }
 
-close () {
+closePopup () {
     //closes popup
     this.classList.remove("modal_opened");
     this.removeEventListener("keydown,", _handleEscClose)
@@ -25,4 +25,15 @@ _handleEscClose (e) {
 
 setEventListeners () {
     // different from setEventListeners in FormValidation???
-}
+    modals.forEach((modal) => {
+        modal.addEventListener("mousedown", (evt) => {
+          if (
+            evt.target.classList.contains("modal_opened") ||
+            evt.target.classList.contains("modal__close")
+          ) {
+            closeModal(modal);
+          }
+        });
+      });
+      profileEditForm.addEventListener("submit", submitProfileForm);
+    }
