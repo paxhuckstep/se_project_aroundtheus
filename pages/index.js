@@ -115,12 +115,12 @@ function renderCard(cardData) {
 
 cardSection.renderItems();
 //This goes to Popup
-function handleImageButton(cardData) {
-  openModal(pictureModal);
-  pictureModalImage.src = cardData.link;
-  pictureModalImage.alt = cardData.name;
-  pictureModalHeading.textContent = cardData.name;
-}
+// function handleImageButton(cardData) {
+//   openModal(pictureModal);
+//   pictureModalImage.src = cardData.link;
+//   pictureModalImage.alt = cardData.name;
+//   pictureModalHeading.textContent = cardData.name;
+// }
 
 // This Goes to PopupWithForm.js??
 function submitCardAdd(e) {
@@ -136,7 +136,8 @@ function submitCardAdd(e) {
 //LISTENER This stays but logic comes from PopupWithForm.js ??
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
-  openModal(profileEditModal);
+  // openModal(profileEditModal);
+  EditProfilePopup.openPopup();
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 });
