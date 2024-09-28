@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidation.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 
 const initialCards = [
@@ -115,12 +116,12 @@ function renderCard(cardData) {
 
 cardSection.renderItems();
 //This goes to Popup
-// function handleImageButton(cardData) {
-//   openModal(pictureModal);
-//   pictureModalImage.src = cardData.link;
-//   pictureModalImage.alt = cardData.name;
-//   pictureModalHeading.textContent = cardData.name;
-// }
+function handleImageButton(cardData) {
+  openModal(pictureModal);
+  // pictureModalImage.src = cardData.link;
+  // pictureModalImage.alt = cardData.name;
+  // pictureModalHeading.textContent = cardData.name;
+}
 
 // This Goes to PopupWithForm.js??
 function submitCardAdd(e) {
@@ -137,7 +138,7 @@ function submitCardAdd(e) {
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   // openModal(profileEditModal);
-  EditProfilePopup.openPopup();
+  editProfilePopup.openPopup();
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 });
@@ -163,11 +164,13 @@ addFormValidator.enableValidation();
 
 const newCardPopup = new PopupWithForm('#card-add-modal', submitCardAdd);
 
-const EditProfilePopup = new PopupWithForm('#edit-modal', submitProfileForm);
+const editProfilePopup = new PopupWithForm('#edit-modal', submitProfileForm);
 
+const imagePopup = new PopupWithImage('#picture-modal');
+imagePopup.setEventListeners();
 
 //don't these go inside the anonomous function?? at least open? 
-newCardPopup.open();
+//newCardPopup.open();
 
 
-newCardPopup.close();
+//newCardPopup.close();
