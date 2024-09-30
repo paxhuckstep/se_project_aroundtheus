@@ -32,31 +32,32 @@ const initialCards = [
 ];
 
 const cardData = {
+  //Why do I have cardData as just one card's data??????????????
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-//VARIABLES opening/closing modal
-const profileEditModal = document.querySelector("#edit-modal");
-const cardAddModal = document.querySelector("#card-add-modal");
-const addNewCardButton = document.querySelector(".profile__add-button");
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
-const cardTitleInput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#card-url-input");
-const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-//const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-const cardListEl = document.querySelector(".cards__list");
-const pictureModal = document.querySelector("#picture-modal");
-const pictureModalHeading = document.querySelector("#picture-modal-heading");
-const pictureModalImage = document.querySelector("#picture-modal-image");
-const addCardForm = document.querySelector("#add-card-form");
-const modals = document.querySelectorAll(".modal");
+//VARIABLES opening/closing modal EXPORTEDDDD
+import {
+profileEditModal,
+cardAddModal,
+addNewCardButton,
+profileEditButton,
+profileTitle,
+profileDescription,
+profileTitleInput,
+profileDescriptionInput,
+cardTitleInput,
+cardUrlInput,
+profileEditForm,
+cardListEl,
+pictureModal,
+pictureModalHeading,
+pictureModalImage,
+addCardForm,
+ modals,
+} from "../utils/constants.js";
+// exported
 
 // this stay but closeModal becomes close() from Popup.js ?
 // modals.forEach((modal) => {
@@ -71,7 +72,6 @@ const modals = document.querySelectorAll(".modal");
 // });
 // stays in index.js ???
 // profileEditForm.addEventListener("submit", submitProfileForm);
-
 
 // turns into open() in Popup.js ??
 // function openModal(modal) {
@@ -100,14 +100,16 @@ function submitProfileForm(e) {
   closeModal(profileEditModal);
 }
 
-
 // this stays in index.js ???
-function createCard (cardData) {
+function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleImageButton);
   return cardElement.getView();
 }
 
-const cardSection = new Section ({items: initialCards, renderer: renderCard }, ".cards__list")
+const cardSection = new Section(
+  { items: initialCards, renderer: renderCard },
+  ".cards__list"
+);
 // This becomes render() in Section.js ??
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
@@ -147,6 +149,7 @@ addNewCardButton.addEventListener("click", () => {
 });
 addCardForm.addEventListener("submit", submitCardAdd);
 
+//exported
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -155,6 +158,7 @@ const settings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+// exported
 
 const editFormValidator = new FormValidator(settings, profileEditModal);
 editFormValidator.enableValidation();
@@ -162,15 +166,14 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const newCardPopup = new PopupWithForm('#card-add-modal', submitCardAdd);
+const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
 
-const editProfilePopup = new PopupWithForm('#edit-modal', submitProfileForm);
+const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 
-const imagePopup = new PopupWithImage('#picture-modal');
+const imagePopup = new PopupWithImage("#picture-modal", cardData);
 imagePopup.setEventListeners();
 
-//don't these go inside the anonomous function?? at least open? 
+//don't these go inside the anonomous function?? at least open?
 //newCardPopup.open();
-
 
 //newCardPopup.close();

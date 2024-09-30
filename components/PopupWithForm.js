@@ -18,7 +18,6 @@ export default class PopupWithForm extends Popup {
 
   closePopupWithForm() {
     this._popupForm.reset();
-    super.closePopup(); 
+    super.closePopup();
   }
 }
-
