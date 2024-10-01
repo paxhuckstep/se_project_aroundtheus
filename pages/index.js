@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidation.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -39,23 +40,23 @@ const cardData = {
 
 //VARIABLES opening/closing modal EXPORTEDDDD
 import {
-profileEditModal,
-cardAddModal,
-addNewCardButton,
-profileEditButton,
-profileTitle,
-profileDescription,
-profileTitleInput,
-profileDescriptionInput,
-cardTitleInput,
-cardUrlInput,
-profileEditForm,
-cardListEl,
-pictureModal,
-pictureModalHeading,
-pictureModalImage,
-addCardForm,
- modals,
+  profileEditModal,
+  cardAddModal,
+  addNewCardButton,
+  profileEditButton,
+  profileTitle,
+  profileDescription,
+  profileTitleInput,
+  profileDescriptionInput,
+  cardTitleInput,
+  cardUrlInput,
+  profileEditForm,
+  cardListEl,
+  pictureModal,
+  pictureModalHeading,
+  pictureModalImage,
+  addCardForm,
+  modals,
 } from "../utils/constants.js";
 // exported
 
@@ -93,11 +94,15 @@ addCardForm,
 //   document.removeEventListener("keydown", handleEscapeKey);
 //}
 // this goes to PopupWithForm.js ??
-function submitProfileForm(e) {
-  e.preventDefault(e);
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+function submitProfileForm(userData) {
+  // e.preventDefault(e);
+  // profileTitle.textContent = profileTitleInput.value;
+  // profileDescription.textContent = profileDescriptionInput.value;
+  userInfoClass.setUserInfo({
+    name: userData.name,
+    job: userData.description,
+  });
+  editProfilePopup.closePopupWithForm();
 }
 
 // this stays in index.js ???
@@ -140,9 +145,13 @@ function submitCardAdd(e) {
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   // openModal(profileEditModal);
+
+  const userDetails = userInfoClass.getUserInfo()
+  console.log(userDetails);
+
   editProfilePopup.openPopup();
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  profileTitleInput.value = userDetails.name;
+  profileDescriptionInput.value = userDetails.job;
 });
 addNewCardButton.addEventListener("click", () => {
   openModal(cardAddModal);
@@ -169,9 +178,15 @@ addFormValidator.enableValidation();
 const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
 
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
+editProfilePopup.setEventListeners();
 
 const imagePopup = new PopupWithImage("#picture-modal", cardData);
 imagePopup.setEventListeners();
+
+const userInfoClass = new UserInfo({
+  userName: ".profile__title",
+  userJob: ".profile__description",
+});
 
 //don't these go inside the anonomous function?? at least open?
 //newCardPopup.open();

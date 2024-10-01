@@ -1,29 +1,23 @@
-import {
-    profileTitle,
-    profileDescription
-    profileTitleInput
-    profileDescriptionInput
-} from "../utils/constants";
-
-import PopupWithForm from "./PopupWithForm";import PopupWithForm from "./PopupWithForm";
-
-export default class UserInfo extends PopupWithForm {
+export default class UserInfo {
     constructor ({ userName, userJob }) {
-        this._name = userName;
-        this._job = userJob;
+        this._nameElement = document.querySelector(userName);
+        this._jobElement = document.querySelector(userJob);
     }
 
 
 getUserInfo() {
 const userInfo = {
-
+name: this._nameElement.textContent,
+job: this._jobElement.textContent,
 }
 // getting the user info
 return userInfo
 }
 
-setUserInfo() {
+setUserInfo(userInput) {
 // sets userInfo at end of submitProfileEdit ()
+this._nameElement.textContent = userInput.name;
+this._jobElement.textContent = userInput.job;
 }
 
 }
