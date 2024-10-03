@@ -132,13 +132,13 @@ function handleImageButton(cardData) {
 
 // This Goes to PopupWithForm.js??
 function submitCardAdd(e) {
-  e.preventDefault();
+ // e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
   e.target.reset();
   addFormValidator.disableButton();
-  closeModal(cardAddModal);
+  newCardPopup.closePopupWithForm();
 }
 
 //LISTENER This stays but logic comes from PopupWithForm.js ??
@@ -154,7 +154,7 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = userDetails.job;
 });
 addNewCardButton.addEventListener("click", () => {
-  openModal(cardAddModal);
+  newCardPopup.openPopup();
 });
 addCardForm.addEventListener("submit", submitCardAdd);
 
@@ -176,6 +176,7 @@ const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
 const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
+newCardPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 editProfilePopup.setEventListeners();
