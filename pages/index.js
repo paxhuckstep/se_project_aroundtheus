@@ -124,15 +124,16 @@ function renderCard(cardData) {
 cardSection.renderItems();
 //This goes to Popup
 function handleImageButton(cardData) {
-  openModal(pictureModal);
+  // openModal(pictureModal);
+  imagePopup.openPopupWithImage(cardData);
   // pictureModalImage.src = cardData.link;
   // pictureModalImage.alt = cardData.name;
   // pictureModalHeading.textContent = cardData.name;
 }
 
 // This Goes to PopupWithForm.js??
-function submitCardAdd(e) {
- // e.preventDefault();
+function submitCardAdd() {
+  // e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
@@ -146,7 +147,7 @@ profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   // openModal(profileEditModal);
 
-  const userDetails = userInfoClass.getUserInfo()
+  const userDetails = userInfoClass.getUserInfo();
   console.log(userDetails);
 
   editProfilePopup.openPopup();
