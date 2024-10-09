@@ -1,9 +1,9 @@
 export const profileEditModal = document.querySelector("#edit-modal");
-export const cardAddModal = document.querySelector("#card-add-modal");
+//export const cardAddModal = document.querySelector("#card-add-modal");
 export const addNewCardButton = document.querySelector(".profile__add-button");
 export const profileEditButton = document.querySelector(".profile__edit-button");
-export const profileTitle = document.querySelector(".profile__title");
-export const profileDescription = document.querySelector(".profile__description");
+//export const profileTitle = document.querySelector(".profile__title");
+//export const profileDescription = document.querySelector(".profile__description");
 export const profileTitleInput = document.querySelector("#profile-title-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
@@ -11,13 +11,21 @@ export const profileDescriptionInput = document.querySelector(
 export const cardTitleInput = document.querySelector("#card-title-input");
 export const cardUrlInput = document.querySelector("#card-url-input");
 export const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-export const cardListEl = document.querySelector(".cards__list");
-export const pictureModal = document.querySelector("#picture-modal");
-export const pictureModalHeading = document.querySelector("#picture-modal-heading");
-export const pictureModalImage = document.querySelector("#picture-modal-image");
+//export const cardListEl = document.querySelector(".cards__list");
+//export const pictureModal = document.querySelector("#picture-modal");
+//export const pictureModalHeading = document.querySelector("#picture-modal-heading");
+//export const pictureModalImage = document.querySelector("#picture-modal-image");
 export const addCardForm = document.querySelector("#add-card-form");
-export const modals = document.querySelectorAll(".modal");
+//export const modals = document.querySelectorAll(".modal");
 
+
+////
+
+
+
+
+
+////
 
 export const settings = {
     formSelector: ".modal__form",

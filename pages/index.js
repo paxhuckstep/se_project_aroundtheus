@@ -5,58 +5,52 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago de Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+// const initialCards = [
+//   {
+//     name: "Yosemite Valley",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//   },
+//   {
+//     name: "Lake Louise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+//   },
+//   {
+//     name: "Bald Mountains",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+//   },
+//   {
+//     name: "Latemar",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+//   },
+//   {
+//     name: "Vanoise National Park",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+//   },
+//   {
+//     name: "Lago de Braies",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+//   },
+// ];
 
-const cardData = {
-  //Why do I have cardData as just one card's data??????????????
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+// const cardData = {
+//   //Why do I have cardData as just one card's data??????????????
+//   name: "Yosemite Valley",
+//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+// };
 
 //VARIABLES opening/closing modal EXPORTEDDDD
 import {
   profileEditModal,
-  cardAddModal,
   addNewCardButton,
   profileEditButton,
-  profileTitle,
-  profileDescription,
   profileTitleInput,
   profileDescriptionInput,
   cardTitleInput,
   cardUrlInput,
-  profileEditForm,
-  cardListEl,
-  pictureModal,
-  pictureModalHeading,
-  pictureModalImage,
   addCardForm,
-  modals,
+  initialCards,
+  cardData,
+  settings,
 } from "../utils/constants.js";
 // exported
 
@@ -132,8 +126,8 @@ function handleImageButton(cardData) {
 }
 
 // This Goes to PopupWithForm.js??
-function submitCardAdd(test) {
-  console.log(test);
+function submitCardAdd() {
+  console.log();
   // e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
@@ -161,14 +155,14 @@ addNewCardButton.addEventListener("click", () => {
 //addCardForm.addEventListener("submit", submitCardAdd);
 
 //exported
-const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__save_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
+// const settings = {
+//   formSelector: ".modal__form",
+//   inputSelector: ".modal__input",
+//   submitButtonSelector: ".modal__save",
+//   inactiveButtonClass: "modal__save_disabled",
+//   inputErrorClass: "modal__input_type_error",
+//   errorClass: "modal__error_visible",
+// };
 // exported
 
 const editFormValidator = new FormValidator(settings, profileEditModal);

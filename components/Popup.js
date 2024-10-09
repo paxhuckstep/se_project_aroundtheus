@@ -17,7 +17,6 @@ export default class Popup {
 
   _handleEscClose(e) {
     //listens to esc button
-    console.log("is this thing firing");
     if (e.key === "Escape") {
       this.closePopup();
     }
@@ -27,12 +26,11 @@ export default class Popup {
     // different from setEventListeners in FormValidation???
     console.log(this._popupElement);
     this._popupElement.addEventListener("mousedown", (evt) => {
-      console.log(evt);
+ 
       if (
         evt.target.classList.contains("modal_opened") ||
         evt.target.classList.contains("modal__close")
       ) {
-        console.log("are we making it here");
         this.closePopup();
       }
     });
