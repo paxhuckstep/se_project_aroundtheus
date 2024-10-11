@@ -9,7 +9,7 @@
     <meta name="keywords" content="Keyword1, keyword2, blah, bang, arang" />
     <!--SEO Keywords-->
     <meta name="author" content="Pax Huckstep" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <link rel="shortcut icon" href="favicon.ico" />
   </head>
   <body class="page">
@@ -17,6 +17,7 @@
       <header class="header page__section">
         <img
           src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="Around the US logo"
           class="header__logo"
         />
@@ -24,7 +25,8 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
+
             alt="Avatar"
             class="profile__image"
           />
@@ -145,6 +147,6 @@
       </li>
     </template>
     <!--Java Script-->
-    <script src="./pages/index.js" type="module"></script>
+   <!-- <script src="./pages/index.js" type="module"></script> -->
   </body>
 </html>

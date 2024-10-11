@@ -4,6 +4,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import "./index.css";
 
 // const initialCards = [
 //   {
@@ -132,9 +133,9 @@ function submitCardAdd() {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
- // e.target.reset();
+  // e.target.reset();
   addFormValidator.disableButton();
- // newCardPopup.closePopupWithForm();
+  // newCardPopup.closePopupWithForm();
 }
 
 //LISTENER This stays but logic comes from PopupWithForm.js ??
