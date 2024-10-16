@@ -12,11 +12,8 @@ import {
   profileEditButton,
   profileTitleInput,
   profileDescriptionInput,
-  cardTitleInput,
-  cardUrlInput,
   addCardForm,
   initialCards,
-  cardData,
   settings,
 } from "../utils/constants.js";
 
@@ -27,7 +24,6 @@ function submitProfileForm(userData) {
   });
   editProfilePopup.closePopup();
 }
-
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleImageButton);
@@ -44,26 +40,23 @@ function renderCard(cardData) {
   cardSection.addItem(cardElement);
 }
 
-cardSection.renderItems();  
+cardSection.renderItems();
 
 function handleImageButton(cardData) {
   imagePopup.openPopup(cardData);
 }
 
-function submitCardAdd() {
-  console.log();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
+function submitCardAdd(inputValues) {
+  const name = inputValues.title;
+  const link = inputValues.url;
+  console.log(inputValues);
   renderCard({ name, link });
   addFormValidator.disableButton();
 }
 
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
-
   const userDetails = userInfoClass.getUserInfo();
-  console.log(userDetails);
-
   editProfilePopup.openPopup();
   profileTitleInput.value = userDetails.name;
   profileDescriptionInput.value = userDetails.job;
@@ -84,8 +77,7 @@ newCardPopup.setEventListeners();
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 editProfilePopup.setEventListeners();
 
-const imagePopup = new PopupWithImage("#picture-modal", cardData);
-// "cardData isn't needed"... but it breaks when I take it out. 
+const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
 const userInfoClass = new UserInfo({

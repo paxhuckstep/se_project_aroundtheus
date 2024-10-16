@@ -5,8 +5,8 @@ export const profileTitleInput = document.querySelector("#profile-title-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-export const cardTitleInput = document.querySelector("#card-title-input");
-export const cardUrlInput = document.querySelector("#card-url-input");
+//export const cardTitleInput = document.querySelector("#card-title-input");
+//export const cardUrlInput = document.querySelector("#card-url-input");
 export const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 export const addCardForm = document.querySelector("#add-card-form");
 
@@ -46,9 +46,4 @@ export const settings = {
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
     },
   ];
-  
- export const cardData = {
-    name: "",
-    link: "",
-  };
-  // it breaks if I delete the whole thing, however I can make the values empty strings and it still works. 
+   
