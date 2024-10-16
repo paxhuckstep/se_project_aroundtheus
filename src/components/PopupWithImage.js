@@ -8,7 +8,7 @@ export default class PopupWithImage extends Popup {
     this._name = cardData.name;
     this._link = cardData.link;
   }
-  openPopupWithImage({ name, link }) {
+  openPopup({ name, link }) {
     //opening with name and link of image
     this._image.src = link;
     this._image.alt = name;
