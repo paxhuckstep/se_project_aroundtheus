@@ -5,6 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
+import { api } from "../components/Api.js";
 
 import {
   profileEditForm,
@@ -84,3 +85,13 @@ const userInfoClass = new UserInfo({
   userName: ".profile__title",
   userJob: ".profile__description",
 });
+
+api
+  .getInitialCards()
+  .then((result) => {
+    // process the result
+    console.log(result);
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
