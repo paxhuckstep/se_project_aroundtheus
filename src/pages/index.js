@@ -28,6 +28,7 @@ function submitProfileForm(userData) {
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleImageButton);
+  console.log(cardData);
   return cardElement.getView();
 }
 
@@ -86,11 +87,11 @@ const userInfoClass = new UserInfo({
   userJob: ".profile__description",
 });
 
-api
-  .getInitialCards()
-  .then((result) => {
+
+// const initalCards = ? \/\/\/ ?
+api.getInitialCards().then((result) => {
     // process the result
-    console.log(result);
+    console.log(result); // this becomes cardData on line 29 ??
   })
   .catch((err) => {
     console.error(err); // log the error to the console
