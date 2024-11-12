@@ -2,7 +2,7 @@ export default class Api {
   constructor(options) {
     // constructor body
     this._baseUrl = options.baseUrl;
-    this.header = options.headers;
+    this._headers = options.headers;
   }
 
   // C R U D
@@ -21,59 +21,54 @@ export default class Api {
   //This replaces const "initialCards" right? (line 23 in constants.js)
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: "3842a5e9-1960-4db2-bd37-d3db8df7459f",
-      },
+      headers: this._headers,
     }).then(this.handleServerResponse);
   }
 
-  createNewCard() {
-    return fetch(`${this._baseUrl}/cards`, {
-        headers: {
-            authorization: '______',
-            method: POST, // am I methoding right
-        },
-    }).then(this.handleServerResponse);
-  }
+    createNewCard(card) {
+      return fetch(`${this._baseUrl}/cards`, {
+          headers: this._headers,
+              method: "POST",
+              body: JSON.stringify({
+                name: card.title,
+                link: card.url
+              })
+      }).then(this.handleServerResponse);
+    }
 
-  deleteSelectedCard() {
-    return fetch(`${this._baseUrl}/cards:cardId`,/*where do we get cardId*/  {
-        headers: {
-            authorization: '______',
-            method: delete,
-        },
-    }).then(this.handleServerResponse);
-  }
+    // deleteSelectedCard() {
+    //   return fetch(`${this._baseUrl}/cards:cardId`,/*where do we get cardId*/  {
+    //       headers: {
+    //           authorization: '______',
+    //           method: delete,
+    //       },
+    //   }).then(this.handleServerResponse);
+    // }
 
-  // other methods for working with the API
+  //   // other methods for working with the API
 
-  getCurrentUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-        headers: {
-            authorization: '______',
-        },
-    }).then(this.handleServerResponse);
-  }
+    getCurrentUserInfo() {
+      return fetch(`${this._baseUrl}/users/me`, {
+          headers: this._headers,
+      }).then(this.handleServerResponse);
+    }
 
-  updateProfileInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-        headers: {
-            authorization: '______',
-            method: PATCH, //is this how you "PATCH"
-        },
-    }).then(this.handleServerResponse);
-  }
+    // updateProfileInfo() {
+    //   return fetch(`${this._baseUrl}/users/me`, {
+    //       headers: this._headers,
+    //           method: "PATCH", 
+    //   }).then(this.handleServerResponse);
+    // }
 
-  updateProfileAvatar() {
-    return fetch(`${this._baseUrl}/users/me`, {
-        headers: {
-            authorization: '______',
-            method: PATCH, //^^??
-        },
-    }).then(this.handleServerResponse);
-  }
+  //   updateProfileAvatar() {
+  //     return fetch(`${this._baseUrl}/users/me`, {
+  //         headers: {
+  //             authorization: '______',
+  //             method: PATCH, //^^??
+  //         },
+  //     }).then(this.handleServerResponse);
+  //   }
 }
-
 
 //does this go to constants.js?????
 export const api = new Api({

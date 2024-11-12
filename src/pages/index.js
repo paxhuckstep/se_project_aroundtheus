@@ -28,32 +28,32 @@ function submitProfileForm(userData) {
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleImageButton);
-  console.log(cardData);
+  //console.log(cardData);
   return cardElement.getView();
 }
 
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-  ".cards__list"
-);
+const cardSection = new Section({ renderer: renderCard }, ".cards__list");
 
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardSection.addItem(cardElement);
 }
 
-cardSection.renderItems();
-
 function handleImageButton(cardData) {
   imagePopup.openPopup(cardData);
 }
 
 function submitCardAdd(inputValues) {
-  const name = inputValues.title;
-  const link = inputValues.url;
-  console.log(inputValues);
-  renderCard({ name, link });
-  addFormValidator.disableButton();
+  api
+    .createNewCard(inputValues)
+    .then((data) => {
+      console.log(data);
+      renderCard(data);
+      addFormValidator.disableButton();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -87,11 +87,13 @@ const userInfoClass = new UserInfo({
   userJob: ".profile__description",
 });
 
-
 // const initalCards = ? \/\/\/ ?
-api.getInitialCards().then((result) => {
+api
+  .getInitialCards()
+  .then((result) => {
     // process the result
     console.log(result); // this becomes cardData on line 29 ??
+    cardSection.renderItems(result);
   })
   .catch((err) => {
     console.error(err); // log the error to the console
