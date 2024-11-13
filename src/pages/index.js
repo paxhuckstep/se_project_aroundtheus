@@ -18,12 +18,14 @@ import {
   settings,
 } from "../utils/constants.js";
 
-function submitProfileForm(userData) {
-  userInfoClass.setUserInfo({
-    name: userData.name,
-    job: userData.description,
-  });
-  editProfilePopup.closePopup();
+function submitProfileForm(userDataInput) {
+  api.updateProfileInfo(userDataInput).then((userData) => {
+    userInfoMain.setUserInfo({
+      name: userData.name,
+      job: userData.description,
+    });
+    editProfilePopup.closePopup();
+  }).catch((error) => console.log(error));
 }
 
 function createCard(cardData) {
@@ -58,7 +60,7 @@ function submitCardAdd(inputValues) {
 
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
-  const userDetails = userInfoClass.getUserInfo();
+  const userDetails = userInfoMain.getUserInfo();
   editProfilePopup.openPopup();
   profileTitleInput.value = userDetails.name;
   profileDescriptionInput.value = userDetails.job;
@@ -82,19 +84,20 @@ editProfilePopup.setEventListeners();
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
-const userInfoClass = new UserInfo({
+const userInfoMain = new UserInfo({
   userName: ".profile__title",
   userJob: ".profile__description",
 });
 
-// const initalCards = ? \/\/\/ ?
-api
-  .getInitialCards()
+api.getInitialCards()
   .then((result) => {
-    // process the result
-    console.log(result); // this becomes cardData on line 29 ??
     cardSection.renderItems(result);
   })
   .catch((err) => {
     console.error(err); // log the error to the console
   });
+
+
+  api.getCurrentUserInfo().then((result) =>{
+console.log(result);
+  })

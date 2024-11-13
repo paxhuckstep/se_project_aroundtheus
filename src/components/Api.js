@@ -52,13 +52,18 @@ export default class Api {
           headers: this._headers,
       }).then(this.handleServerResponse);
     }
+// ^^^ How does this relate to getUserInfo() in UserInfo.js ??? ^^^
 
-    // updateProfileInfo() {
-    //   return fetch(`${this._baseUrl}/users/me`, {
-    //       headers: this._headers,
-    //           method: "PATCH", 
-    //   }).then(this.handleServerResponse);
-    // }
+    updateProfileInfo(newUserInfo) {
+      return fetch(`${this._baseUrl}/users/me`, {
+          headers: this._headers,
+              method: "PATCH",
+              body: JSON.stringify({
+                name: newUserInfo.name,
+                about: newUserInfo.job,
+              })
+      }).then(this.handleServerResponse);
+    }
 
   //   updateProfileAvatar() {
   //     return fetch(`${this._baseUrl}/users/me`, {
