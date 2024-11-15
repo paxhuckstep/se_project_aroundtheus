@@ -34,9 +34,13 @@ function submitProfileForm(userDataInput) {
 }
 
 function createCard(cardData) {
-  const cardElement = new Card(cardData, "#card-template", handleImageButton);
+  const cardElement = new Card(cardData, "#card-template", handleImageButton, handleLikeClick);
   //console.log(cardData);
   return cardElement.getView();
+}
+
+function handleLikeClick() {
+  if
 }
 
 const cardSection = new Section({ renderer: renderCard }, ".cards__list");
@@ -62,7 +66,6 @@ function submitCardAdd(inputValues) {
       console.log(error);
     });
 }
-
 
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
@@ -98,6 +101,7 @@ const userInfoMain = new UserInfo({
 api
   .getInitialCards()
   .then((result) => {
+    console.log(result);
     cardSection.renderItems(result);
   })
   .catch((err) => {

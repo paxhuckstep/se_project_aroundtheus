@@ -25,6 +25,22 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
+  likeCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      headers: this._headers,
+      method: 'PUT',
+    }).then(this.handleServerResponse);
+
+  }
+
+  unLikeCard(cardID){
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      headers: this._headers,
+      method: 'DELETE',
+    }).then(this.handleServerResponse);
+
+  }
+
   createNewCard(card) {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -66,7 +82,7 @@ export default class Api {
   }
 
   //   updateProfileAvatar() {
-  //     return fetch(`${this._baseUrl}/users/me`, {
+  //     return fetch(`${this._baseUrl}/users/me/avatar`, {
   //         headers: {
   //             authorization: '______',
   //             method: PATCH, //^^??
