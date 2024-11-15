@@ -25,45 +25,45 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
-    createNewCard(card) {
-      return fetch(`${this._baseUrl}/cards`, {
-          headers: this._headers,
-              method: "POST",
-              body: JSON.stringify({
-                name: card.title,
-                link: card.url
-              })
-      }).then(this.handleServerResponse);
-    }
+  createNewCard(card) {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+      method: "POST",
+      body: JSON.stringify({
+        name: card.title,
+        link: card.url,
+      }),
+    }).then(this.handleServerResponse);
+  }
 
-    // deleteSelectedCard() {
-    //   return fetch(`${this._baseUrl}/cards:cardId`,/*where do we get cardId*/  {
-    //       headers: {
-    //           authorization: '______',
-    //           method: delete,
-    //       },
-    //   }).then(this.handleServerResponse);
-    // }
+  // deleteSelectedCard() {
+  //   return fetch(`${this._baseUrl}/cards:cardId`,/*where do we get cardId*/  {
+  //       headers: {
+  //           authorization: '______',
+  //           method: delete,
+  //       },
+  //   }).then(this.handleServerResponse);
+  // }
 
   //   // other methods for working with the API
 
-    getCurrentUserInfo() {
-      return fetch(`${this._baseUrl}/users/me`, {
-          headers: this._headers,
-      }).then(this.handleServerResponse);
-    }
-// ^^^ How does this relate to getUserInfo() in UserInfo.js ??? ^^^
+  getCurrentUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then(this.handleServerResponse);
+  }
+  // ^^^ How does this relate to getUserInfo() in UserInfo.js ??? ^^^
 
-    updateProfileInfo(newUserInfo) {
-      return fetch(`${this._baseUrl}/users/me`, {
-          headers: this._headers,
-              method: "PATCH",
-              body: JSON.stringify({
-                name: newUserInfo.name,
-                about: newUserInfo.job,
-              })
-      }).then(this.handleServerResponse);
-    }
+  updateProfileInfo(newUserInfo) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+      method: "PATCH",
+      body: JSON.stringify({
+        name: newUserInfo.name,
+        about: newUserInfo.description,
+      }),
+    }).then(this.handleServerResponse);
+  }
 
   //   updateProfileAvatar() {
   //     return fetch(`${this._baseUrl}/users/me`, {

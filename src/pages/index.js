@@ -19,13 +19,18 @@ import {
 } from "../utils/constants.js";
 
 function submitProfileForm(userDataInput) {
-  api.updateProfileInfo(userDataInput).then((userData) => {
-    userInfoMain.setUserInfo({
-      name: userData.name,
-      job: userData.description,
-    });
-    editProfilePopup.closePopup();
-  }).catch((error) => console.log(error));
+  console.log(userDataInput);
+  api
+    .updateProfileInfo(userDataInput)
+    .then((userData) => {
+      console.log(userData);
+      userInfoMain.setUserInfo({
+        name: userData.name,
+        job: userData.about,
+      });
+      editProfilePopup.closePopup();
+    })
+    .catch((error) => console.log(error));
 }
 
 function createCard(cardData) {
@@ -58,6 +63,7 @@ function submitCardAdd(inputValues) {
     });
 }
 
+
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   const userDetails = userInfoMain.getUserInfo();
@@ -89,7 +95,8 @@ const userInfoMain = new UserInfo({
   userJob: ".profile__description",
 });
 
-api.getInitialCards()
+api
+  .getInitialCards()
   .then((result) => {
     cardSection.renderItems(result);
   })
@@ -97,7 +104,10 @@ api.getInitialCards()
     console.error(err); // log the error to the console
   });
 
-
-  api.getCurrentUserInfo().then((result) =>{
-console.log(result);
-  })
+api.getCurrentUserInfo().then((result) => {
+  console.log(result);
+  userInfoMain.setUserInfo({
+    name: result.name,
+    job: result.about,
+  });
+});
