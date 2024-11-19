@@ -35,12 +35,27 @@ function submitProfileForm(userDataInput) {
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleImageButton, handleLikeClick);
-  //console.log(cardData);
+  console.log(cardData);
   return cardElement.getView();
 }
 
-function handleLikeClick() {
-  if
+function handleLikeClick({ID, isLiked}) {
+  if (isLiked = true) {
+    api.unLikeCard(ID)
+    .then(() => {
+//somethingThisCard.handleLikeIcon
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  } else if (isLiked = false) {
+api.likeCard(ID).then(() => {
+  //somethingThiscard.handleLikeIcon
+})
+.catch((error) => {
+  console.log(error);
+});
+  }
 }
 
 const cardSection = new Section({ renderer: renderCard }, ".cards__list");
@@ -58,7 +73,7 @@ function submitCardAdd(inputValues) {
   api
     .createNewCard(inputValues)
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       renderCard(data);
       addFormValidator.disableButton();
     })

@@ -5,7 +5,7 @@ export default class Api {
     this._headers = options.headers;
   }
 
-  // C R U D
+  // C Create R Read U Update D Delete
   // POST, GET*, { PATCH, PUT }, DELETE
 
   // create function to handle server response

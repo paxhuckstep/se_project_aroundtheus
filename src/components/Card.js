@@ -11,7 +11,7 @@ export default class Card {
 
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", () => {
-      this._handleLikeClick();
+      this._handleLikeClick({ID: this._ID, isLiked: cardData.isLiked});
     });
     this._cardTrashButton.addEventListener("click", () => {
       this._handletrashButton();
@@ -49,13 +49,3 @@ export default class Card {
     return this._cardElement;
   }
 }
-//this goes here?
-// fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-//   headers: {
-//     authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6"
-//   }
-// })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   });
