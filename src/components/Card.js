@@ -11,7 +11,8 @@ export default class Card {
 
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", () => {
-      this._handleLikeClick({ID: this._ID, isLiked: cardData.isLiked});
+      this._handleLikeClick({ID: this._ID, isLiked: this._isLiked});
+      console.log(this._ID, this._isLiked); 
     });
     this._cardTrashButton.addEventListener("click", () => {
       this._handletrashButton();

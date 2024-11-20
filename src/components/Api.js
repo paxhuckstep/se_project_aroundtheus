@@ -25,10 +25,13 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
-  likeCard(cardID) {
+  likeCard(cardID,) {
     return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       headers: this._headers,
       method: 'PUT',
+      body: JSON.stringify({
+    isLiked: true,
+      })
     }).then(this.handleServerResponse);
 
   }

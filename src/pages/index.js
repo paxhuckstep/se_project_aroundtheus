@@ -34,27 +34,40 @@ function submitProfileForm(userDataInput) {
 }
 
 function createCard(cardData) {
-  const cardElement = new Card(cardData, "#card-template", handleImageButton, handleLikeClick);
-  console.log(cardData);
+  const cardElement = new Card(
+    cardData,
+    "#card-template",
+    handleImageButton,
+    handleLikeClick
+  );
+  // console.log(cardData);
   return cardElement.getView();
 }
 
-function handleLikeClick({ID, isLiked}) {
-  if (isLiked = true) {
-    api.unLikeCard(ID)
-    .then(() => {
-//somethingThisCard.handleLikeIcon
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  } else if (isLiked = false) {
-api.likeCard(ID).then(() => {
-  //somethingThiscard.handleLikeIcon
-})
-.catch((error) => {
-  console.log(error);
-});
+function handleLikeClick({ ID, isLiked }) {
+  if (isLiked == true) {
+    console.log(isLiked);
+    api
+      .unLikeCard(ID)
+      .then(() => {
+        //somethingThisCard.handleLikeIcon
+        console.log("unliked");
+       // return "api successful";
+      })
+      .catch((error) => {
+        console.log(error);
+        return "api unsuccessful";
+      });
+  } else if (isLiked == false) {
+    api
+      .likeCard(ID, )
+      .then(() => {
+        //somethingThiscard.handleLikeIcon
+        console.log("liked");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 
@@ -116,7 +129,7 @@ const userInfoMain = new UserInfo({
 api
   .getInitialCards()
   .then((result) => {
-    console.log(result);
+     console.log(result);
     cardSection.renderItems(result);
   })
   .catch((err) => {
@@ -124,7 +137,7 @@ api
   });
 
 api.getCurrentUserInfo().then((result) => {
-  console.log(result);
+  // console.log(result);
   userInfoMain.setUserInfo({
     name: result.name,
     job: result.about,
