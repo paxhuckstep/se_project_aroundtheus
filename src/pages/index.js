@@ -44,24 +44,27 @@ function createCard(cardData) {
   return cardElement.getView();
 }
 
-function handleLikeClick({ ID, isLiked }) {
-  if (isLiked == true) {
-    console.log(isLiked);
+function handleLikeClick(card) {
+  const cardId = card.getId();
+  const isLiked = card.getLikeStatus();
+  if (isLiked) {
     api
-      .unLikeCard(ID)
+      .unLikeCard(cardId)
       .then(() => {
         //somethingThisCard.handleLikeIcon
+        card.handleLikeIcon();
         console.log("unliked");
-       // return "api successful";
+        // return "api successful";
       })
       .catch((error) => {
         console.log(error);
-        return "api unsuccessful";
+        // return "api unsuccessful";
       });
-  } else if (isLiked == false) {
+  } else {
     api
-      .likeCard(ID, )
+      .likeCard(cardId)
       .then(() => {
+        card.handleLikeIcon();
         //somethingThiscard.handleLikeIcon
         console.log("liked");
       })
@@ -129,7 +132,7 @@ const userInfoMain = new UserInfo({
 api
   .getInitialCards()
   .then((result) => {
-     console.log(result);
+    console.log(result);
     cardSection.renderItems(result);
   })
   .catch((err) => {

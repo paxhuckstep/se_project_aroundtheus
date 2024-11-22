@@ -25,23 +25,18 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
-  likeCard(cardID,) {
+  likeCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       headers: this._headers,
-      method: 'PUT',
-      body: JSON.stringify({
-    isLiked: true,
-      })
+      method: "PUT",
     }).then(this.handleServerResponse);
-
   }
 
-  unLikeCard(cardID){
+  unLikeCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       headers: this._headers,
-      method: 'DELETE',
+      method: "DELETE",
     }).then(this.handleServerResponse);
-
   }
 
   createNewCard(card) {
