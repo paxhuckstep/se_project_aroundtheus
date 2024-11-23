@@ -79,14 +79,17 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
-  //   updateProfileAvatar() {
-  //     return fetch(`${this._baseUrl}/users/me/avatar`, {
-  //         headers: {
-  //             authorization: '______',
-  //             method: PATCH, //^^??
-  //         },
-  //     }).then(this.handleServerResponse);
-  //   }
+    updateProfileAvatar(avatarInfo) {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
+          headers: {
+              authorization: '______',
+              method: PATCH, 
+              body: JSON.stringify({
+                avatar: avatarInfo,
+              })
+          },
+      }).then(this.handleServerResponse);
+    }
 }
 
 //does this go to constants.js?????

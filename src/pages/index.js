@@ -16,6 +16,7 @@ import {
   addCardForm,
   initialCards,
   settings,
+  avatarPhoto,
 } from "../utils/constants.js";
 
 function submitProfileForm(userDataInput) {
@@ -109,6 +110,10 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.openPopup();
 });
 
+avatarPhoto.addEventListener("click", () => {
+  changeAvatarPopup.openPopup();
+})
+
 const editFormValidator = new FormValidator(settings, profileEditForm);
 editFormValidator.enableValidation();
 
@@ -120,6 +125,9 @@ newCardPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 editProfilePopup.setEventListeners();
+
+const changeAvatarPopup = new PopupWithForm("#change-avatar-modal", submitProfileForm);
+changeAvatarPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();

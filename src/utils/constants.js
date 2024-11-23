@@ -9,6 +9,7 @@ export const profileDescriptionInput = document.querySelector(
 //export const cardUrlInput = document.querySelector("#card-url-input");
 export const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 export const addCardForm = document.querySelector("#add-card-form");
+export const avatarPhoto = document.querySelector("#avatar-photo");
 
 
 export const settings = {
