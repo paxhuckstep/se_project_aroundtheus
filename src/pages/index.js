@@ -17,6 +17,7 @@ import {
   initialCards,
   settings,
   avatarPhoto,
+  avatarPhotoForm,
 } from "../utils/constants.js";
 
 function submitProfileForm(userDataInput) {
@@ -32,6 +33,12 @@ function submitProfileForm(userDataInput) {
       editProfilePopup.closePopup();
     })
     .catch((error) => console.log(error));
+}
+
+function submitAvatarLink(urlInput) {
+  api.updateProfileAvatar(urlInput).then((url) => {
+//image source code stuff and things
+  })
 }
 
 function createCard(cardData) {
@@ -102,6 +109,7 @@ function submitCardAdd(inputValues) {
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   const userDetails = userInfoMain.getUserInfo();
+  console.log(userDetails);
   editProfilePopup.openPopup();
   profileTitleInput.value = userDetails.name;
   profileDescriptionInput.value = userDetails.job;
@@ -110,7 +118,9 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.openPopup();
 });
 
+
 avatarPhoto.addEventListener("click", () => {
+  changeAvatarPopupValidator.resetValidation();
   changeAvatarPopup.openPopup();
 })
 
@@ -120,13 +130,15 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
+const changeAvatarPopupValidator = new FormValidator(settings, avatarPhotoForm)
+
 const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
 newCardPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 editProfilePopup.setEventListeners();
 
-const changeAvatarPopup = new PopupWithForm("#change-avatar-modal", submitProfileForm);
+const changeAvatarPopup = new PopupWithForm("#change-avatar-modal", submitAvatarLink);
 changeAvatarPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage("#picture-modal");

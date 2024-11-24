@@ -10,7 +10,7 @@ export const profileDescriptionInput = document.querySelector(
 export const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 export const addCardForm = document.querySelector("#add-card-form");
 export const avatarPhoto = document.querySelector("#avatar-photo");
-
+export const avatarPhotoForm = document.querySelector("avatar-photo-form");
 
 export const settings = {
     formSelector: ".modal__form",
