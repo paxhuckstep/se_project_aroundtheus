@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 import { api } from "../components/Api.js";
+import Avatar from "../components/Avatar.js";
 
 import {
   profileEditForm,
@@ -14,7 +15,6 @@ import {
   profileTitleInput,
   profileDescriptionInput,
   addCardForm,
-  initialCards,
   settings,
   avatarPhoto,
   avatarPhotoForm,

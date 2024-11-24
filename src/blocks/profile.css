@@ -68,6 +68,12 @@
   background-position: center;
   margin-right: 24px;
 }
+
+.profile__image:hover {
+  mask-image: transparent url(../images/edit-icon.svg) center no-repeat;
+  opacity: 0.6;
+  cursor: pointer;
+}
 @media screen and (max-width: 620px) {
   .profile {
     flex-direction: column;
