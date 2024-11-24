@@ -66,7 +66,7 @@ export default class Api {
       headers: this._headers,
     }).then(this.handleServerResponse);
   }
-  // ^^^ How does this relate to getUserInfo() in UserInfo.js ??? ^^^
+  
 
   updateProfileInfo(newUserInfo) {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -81,13 +81,11 @@ export default class Api {
 
     updateProfileAvatar(avatarInfo) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
-          headers: {
-              authorization: '______',
-              method: PATCH, 
-              body: JSON.stringify({
-                avatar: avatarInfo,
-              })
-          },
+          headers: this._headers,
+          method: "PATCH",
+          body: JSON.stringify({
+            avatar: avatarInfo
+          })
       }).then(this.handleServerResponse);
     }
 }

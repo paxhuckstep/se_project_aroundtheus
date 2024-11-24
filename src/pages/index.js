@@ -131,6 +131,7 @@ const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
 const changeAvatarPopupValidator = new FormValidator(settings, avatarPhotoForm)
+changeAvatarPopupValidator.enableValidation();
 
 const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
 newCardPopup.setEventListeners();
