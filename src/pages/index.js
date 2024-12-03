@@ -6,7 +6,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 import { api } from "../components/Api.js";
-import Avatar from "../components/Avatar.js";
+//import Avatar from "../components/Avatar.js";
 
 import {
   profileEditForm,
@@ -19,6 +19,7 @@ import {
   avatarPhoto,
   avatarPhotoForm,
 } from "../utils/constants.js";
+import Popup from "../components/Popup.js";
 
 function submitProfileForm(userDataInput) {
   console.log(userDataInput);
@@ -34,11 +35,23 @@ function submitProfileForm(userDataInput) {
     })
     .catch((error) => console.log(error));
 }
+const userInfoMain = new UserInfo({
+  userName: ".profile__title",
+  userJob: ".profile__description",
+  userAvatar: ".profile__image",
+});
 
 function submitAvatarLink(urlInput) {
-  api.updateProfileAvatar(urlInput).then((url) => {
-//image source code stuff and things
-  })
+  console.log(urlInput);
+  api
+    .updateProfileAvatar(urlInput)
+    .then((url) => {
+      //image source code stuff and things
+      userInfoMain.setAvatarUrl(url);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function createCard(cardData) {
@@ -46,7 +59,8 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImageButton,
-    handleLikeClick
+    handleLikeClick,
+    handleTrashButton
   );
   // console.log(cardData);
   return cardElement.getView();
@@ -90,8 +104,16 @@ function renderCard(cardData) {
 }
 
 function handleImageButton(cardData) {
+  console.log(cardData);
   imagePopup.openPopup(cardData);
 }
+
+function handleTrashButton() {
+  console.log("trash clicked");
+  cardDeletePopup.openPopup();
+}
+
+function cardDeleteConfirmed() {}
 
 function submitCardAdd(inputValues) {
   api
@@ -118,11 +140,10 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.openPopup();
 });
 
-
 avatarPhoto.addEventListener("click", () => {
   changeAvatarPopupValidator.resetValidation();
   changeAvatarPopup.openPopup();
-})
+});
 
 const editFormValidator = new FormValidator(settings, profileEditForm);
 editFormValidator.enableValidation();
@@ -130,7 +151,7 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const changeAvatarPopupValidator = new FormValidator(settings, avatarPhotoForm)
+const changeAvatarPopupValidator = new FormValidator(settings, avatarPhotoForm);
 changeAvatarPopupValidator.enableValidation();
 
 const newCardPopup = new PopupWithForm("#card-add-modal", submitCardAdd);
@@ -139,16 +160,18 @@ newCardPopup.setEventListeners();
 const editProfilePopup = new PopupWithForm("#edit-modal", submitProfileForm);
 editProfilePopup.setEventListeners();
 
-const changeAvatarPopup = new PopupWithForm("#change-avatar-modal", submitAvatarLink);
+const changeAvatarPopup = new PopupWithForm(
+  "#change-avatar-modal",
+  submitAvatarLink
+);
 changeAvatarPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
-const userInfoMain = new UserInfo({
-  userName: ".profile__title",
-  userJob: ".profile__description",
-});
+const cardDeletePopup = new Popup("#delete-card-modal");
+cardDeletePopup.setEventListeners();
+
 
 api
   .getInitialCards()
