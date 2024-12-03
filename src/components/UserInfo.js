@@ -28,6 +28,6 @@ export default class UserInfo {
 // }
 
   setAvatarUrl(avatarInput){
-    this._avatarElement.src = avatarInput.url;
+    this._avatarElement.src = avatarInput;
   }
 }

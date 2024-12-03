@@ -24,7 +24,7 @@ export default class Popup {
   };
 
   setEventListeners() {
-    // different from setEventListeners in FormValidation???
+    console.log(this._popupElement);
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("modal_opened") ||

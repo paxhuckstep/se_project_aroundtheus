@@ -42,12 +42,11 @@ const userInfoMain = new UserInfo({
 });
 
 function submitAvatarLink(urlInput) {
-  console.log(urlInput);
   api
-    .updateProfileAvatar(urlInput)
-    .then((url) => {
+    .updateProfileAvatar(urlInput.url)
+    .then((data) => {
       //image source code stuff and things
-      userInfoMain.setAvatarUrl(url);
+      userInfoMain.setAvatarUrl(data.avatar);
     })
     .catch((error) => {
       console.log(error);
@@ -172,7 +171,6 @@ imagePopup.setEventListeners();
 const cardDeletePopup = new Popup("#delete-card-modal");
 cardDeletePopup.setEventListeners();
 
-
 api
   .getInitialCards()
   .then((result) => {
@@ -189,4 +187,5 @@ api.getCurrentUserInfo().then((result) => {
     name: result.name,
     job: result.about,
   });
+  userInfoMain.setAvatarUrl(result.avatar);
 });
