@@ -24,6 +24,7 @@ export default class Card {
   }
 
   cardDeletionConfirmed() { // _handletrashButton
+    console.log("card delete clicked");
     this._cardElement.remove();
     this._cardElement = null;
   }

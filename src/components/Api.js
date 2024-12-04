@@ -50,14 +50,12 @@ export default class Api {
     }).then(this.handleServerResponse);
   }
 
-  // deleteSelectedCard() {
-  //   return fetch(`${this._baseUrl}/cards:cardId`,/*where do we get cardId*/  {
-  //       headers: {
-  //           authorization: '______',
-  //           method: delete,
-  //       },
-  //   }).then(this.handleServerResponse);
-  // }
+  deleteSelectedCard(cardID) {
+    return fetch(`${this._baseUrl}/cards:${cardID}`,/*where do we get cardId*/  {
+        headers: this._headers,
+        method: "DELETE",
+    }).then(this.handleServerResponse);
+  }
 
   //   // other methods for working with the API
 

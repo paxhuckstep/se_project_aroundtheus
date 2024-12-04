@@ -20,13 +20,12 @@ import {
   avatarPhotoForm,
 } from "../utils/constants.js";
 import Popup from "../components/Popup.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 function submitProfileForm(userDataInput) {
-  console.log(userDataInput);
   api
     .updateProfileInfo(userDataInput)
     .then((userData) => {
-      console.log(userData);
       userInfoMain.setUserInfo({
         name: userData.name,
         job: userData.about,
@@ -61,7 +60,6 @@ function createCard(cardData) {
     handleLikeClick,
     handleTrashButton
   );
-  // console.log(cardData);
   return cardElement.getView();
 }
 
@@ -74,7 +72,6 @@ function handleLikeClick(card) {
       .then(() => {
         //somethingThisCard.handleLikeIcon
         card.handleLikeIcon();
-        console.log("unliked");
         // return "api successful";
       })
       .catch((error) => {
@@ -86,8 +83,6 @@ function handleLikeClick(card) {
       .likeCard(cardId)
       .then(() => {
         card.handleLikeIcon();
-        //somethingThiscard.handleLikeIcon
-        console.log("liked");
       })
       .catch((error) => {
         console.log(error);
@@ -103,22 +98,24 @@ function renderCard(cardData) {
 }
 
 function handleImageButton(cardData) {
-  console.log(cardData);
   imagePopup.openPopup(cardData);
 }
 
 function handleTrashButton() {
-  console.log("trash clicked");
   cardDeletePopup.openPopup();
 }
 
-function cardDeleteConfirmed() {}
+function cardDeleteConfirmed() {
+  api.deleteSelectedCard().then(() =>{
+    card.cardDeletionConfirmed();
+  })
+  
+}
 
 function submitCardAdd(inputValues) {
   api
     .createNewCard(inputValues)
     .then((data) => {
-      // console.log(data);
       renderCard(data);
       addFormValidator.disableButton();
     })
@@ -130,7 +127,6 @@ function submitCardAdd(inputValues) {
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   const userDetails = userInfoMain.getUserInfo();
-  console.log(userDetails);
   editProfilePopup.openPopup();
   profileTitleInput.value = userDetails.name;
   profileDescriptionInput.value = userDetails.job;
@@ -168,13 +164,12 @@ changeAvatarPopup.setEventListeners();
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
-const cardDeletePopup = new Popup("#delete-card-modal");
+const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal", cardDeleteConfirmed);
 cardDeletePopup.setEventListeners();
 
 api
   .getInitialCards()
   .then((result) => {
-    console.log(result);
     cardSection.renderItems(result);
   })
   .catch((err) => {
@@ -182,7 +177,6 @@ api
   });
 
 api.getCurrentUserInfo().then((result) => {
-  // console.log(result);
   userInfoMain.setUserInfo({
     name: result.name,
     job: result.about,
