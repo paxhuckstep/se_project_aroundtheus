@@ -70,13 +70,10 @@ function handleLikeClick(card) {
     api
       .unLikeCard(cardId)
       .then(() => {
-        //somethingThisCard.handleLikeIcon
         card.handleLikeIcon();
-        // return "api successful";
       })
       .catch((error) => {
         console.log(error);
-        // return "api unsuccessful";
       });
   } else {
     api
@@ -101,15 +98,18 @@ function handleImageButton(cardData) {
   imagePopup.openPopup(cardData);
 }
 
-function handleTrashButton() {
-  cardDeletePopup.openPopup();
+function handleTrashButton(card) {
+  console.log(card);
+  const cardId = card.getId();
+  console.log(cardId);
+  cardDeletePopup.openPopup(cardId);
 }
 
-function cardDeleteConfirmed() {
-  api.deleteSelectedCard().then(() =>{
-    card.cardDeletionConfirmed();
-  })
-  
+function handleConfirmationClick(data) {
+  console.log(data);
+  // api.deleteSelectedCard().then(() =>{
+  //   card.cardDeletionConfirmed();
+  // })
 }
 
 function submitCardAdd(inputValues) {
@@ -164,7 +164,10 @@ changeAvatarPopup.setEventListeners();
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
-const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal", cardDeleteConfirmed);
+const cardDeletePopup = new PopupWithConfirmation(
+  "#delete-card-modal",
+  handleConfirmationClick
+);
 cardDeletePopup.setEventListeners();
 
 api

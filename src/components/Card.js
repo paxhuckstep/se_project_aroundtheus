@@ -16,7 +16,7 @@ export default class Card {
       console.log(this);
     });
     this._cardTrashButton.addEventListener("click", () => {
-      this._handleTrashClick();
+      this._handleTrashClick(this);
     });
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ name: this._name, link: this._link });

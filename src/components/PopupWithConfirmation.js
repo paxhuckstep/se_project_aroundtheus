@@ -7,9 +7,18 @@ export default class PopupWithConfirmation extends Popup {
     this._yesDeleteButton = document.querySelector("#delete-card-button");
   }
 
+
+  openPopup(data){
+    console.log(data);
+    super.openPopup();
+    const cardID = data;
+    return cardID
+  }
+
   setEventListeners() {
     this._yesDeleteButton.addEventListener("click", () => {
-      this._handleConfirmationClick(this);
+        console.log(cardID);
+      this._handleConfirmationClick(cardID);
       this.closePopup;
     });
     super.setEventListeners();
