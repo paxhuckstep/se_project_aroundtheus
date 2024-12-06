@@ -51,7 +51,7 @@ export default class Api {
   }
 
   deleteSelectedCard(cardID) {
-    return fetch(`${this._baseUrl}/cards:${cardID}`,/*where do we get cardId*/  {
+    return fetch(`${this._baseUrl}/cards/${cardID}`,/*where do we get cardId*/  {
         headers: this._headers,
         method: "DELETE",
     }).then(this.handleServerResponse);

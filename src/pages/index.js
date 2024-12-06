@@ -101,8 +101,18 @@ function handleImageButton(cardData) {
 function handleTrashButton(card) {
   console.log(card);
   const cardId = card.getId();
-  console.log(cardId);
-  cardDeletePopup.openPopup(cardId);
+  cardDeletePopup.openPopup();
+  cardDeletePopup.setSubmitAction(() => {
+    api.deleteSelectedCard(cardId).then(() => {
+      card.cardDeletionConfirmed();
+      cardDeletePopup.closePopup();
+    }
+    ).catch((error) => {
+      console.log(error);
+    })
+  })
+
+  //promises and card.cardDeleteConfirmed
 }
 
 function handleConfirmationClick(data) {
@@ -166,7 +176,6 @@ imagePopup.setEventListeners();
 
 const cardDeletePopup = new PopupWithConfirmation(
   "#delete-card-modal",
-  handleConfirmationClick
 );
 cardDeletePopup.setEventListeners();
 
