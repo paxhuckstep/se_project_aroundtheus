@@ -6,7 +6,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 import { api } from "../components/Api.js";
-//import Avatar from "../components/Avatar.js";
 
 import {
   profileEditForm,
@@ -44,7 +43,6 @@ function submitAvatarLink(urlInput) {
   api
     .updateProfileAvatar(urlInput.url)
     .then((data) => {
-      //image source code stuff and things
       userInfoMain.setAvatarUrl(data.avatar);
     })
     .catch((error) => {
@@ -103,23 +101,16 @@ function handleTrashButton(card) {
   const cardId = card.getId();
   cardDeletePopup.openPopup();
   cardDeletePopup.setSubmitAction(() => {
-    api.deleteSelectedCard(cardId).then(() => {
-      card.cardDeletionConfirmed();
-      cardDeletePopup.closePopup();
-    }
-    ).catch((error) => {
-      console.log(error);
-    })
-  })
-
-  //promises and card.cardDeleteConfirmed
-}
-
-function handleConfirmationClick(data) {
-  console.log(data);
-  // api.deleteSelectedCard().then(() =>{
-  //   card.cardDeletionConfirmed();
-  // })
+    api
+      .deleteSelectedCard(cardId)
+      .then(() => {
+        card.cardDeletionConfirmed();
+        cardDeletePopup.closePopup();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 }
 
 function submitCardAdd(inputValues) {
@@ -174,9 +165,7 @@ changeAvatarPopup.setEventListeners();
 const imagePopup = new PopupWithImage("#picture-modal");
 imagePopup.setEventListeners();
 
-const cardDeletePopup = new PopupWithConfirmation(
-  "#delete-card-modal",
-);
+const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
 cardDeletePopup.setEventListeners();
 
 api
@@ -185,7 +174,7 @@ api
     cardSection.renderItems(result);
   })
   .catch((err) => {
-    console.error(err); // log the error to the console
+    console.error(err);
   });
 
 api.getCurrentUserInfo().then((result) => {
