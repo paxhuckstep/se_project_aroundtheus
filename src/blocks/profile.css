@@ -72,11 +72,10 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-
 }
 
 .profile__image:hover {
-  opacity: 0.6;
+  opacity: 0.6; /*why doesn't this apply??*/
 }
 
 .profile__avatar-button {
