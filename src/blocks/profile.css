@@ -74,12 +74,8 @@
   background-position: center;
 }
 
-.profile__image:hover {
-  opacity: 0.6; /*why doesn't this apply??*/
-}
-
 .profile__avatar-button {
-  background: transparent url(../images/edit-icon-large.png) center no-repeat;
+  background: rgb(0 0 0 / 0.6) url(../images/edit-icon-large.png) center no-repeat;
   position: absolute;
   top: 0;
   left: 0;

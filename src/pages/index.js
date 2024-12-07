@@ -184,3 +184,5 @@ api.getCurrentUserInfo().then((result) => {
   });
   userInfoMain.setAvatarUrl(result.avatar);
 });
+
+// https://paxhuckstep.github.io/se_project_aroundtheus
