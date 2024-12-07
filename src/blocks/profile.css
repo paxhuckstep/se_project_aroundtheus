@@ -75,8 +75,12 @@
 
 }
 
+.profile__image:hover {
+  opacity: 0.6;
+}
+
 .profile__avatar-button {
-  background: transparent url(../images/edit-icon.svg) center no-repeat;
+  background: transparent url(../images/edit-icon-large.png) center no-repeat;
   position: absolute;
   top: 0;
   left: 0;
