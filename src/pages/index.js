@@ -186,4 +186,4 @@ api.getCurrentUserInfo().then((result) => {
 });
 
 // github pages link: https://paxhuckstep.github.io/se_project_aroundtheus
-
+//extra notes for pull request
