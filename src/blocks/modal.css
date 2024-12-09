@@ -28,6 +28,9 @@
   height: 258px;
   cursor: auto;
 }
+.modal__container_delete-confirmation {
+  height: 181px;
+}
 .modal__container_picture-modal {
   background-color: transparent;
   height: unset;

@@ -5,6 +5,7 @@ export default class Popup {
 
   openPopup() {
     // open popup (whats a modal vs popup?)
+    console.log(this._popupElement);
     this._popupElement.classList.add("modal_opened");
     document.addEventListener("keydown", this._handleEscClose);
   }
@@ -20,10 +21,10 @@ export default class Popup {
     if (e.key === "Escape") {
       this.closePopup();
     }
-  }
+  };
 
   setEventListeners() {
-    // different from setEventListeners in FormValidation???
+    console.log(this._popupElement);
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("modal_opened") ||
