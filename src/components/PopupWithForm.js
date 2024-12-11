@@ -17,9 +17,17 @@ export default class PopupWithForm extends Popup {
     return formValues;
   }
 
- openPopup() {
+//  openPopup() {
+//   this._saveButton.textContent = "Save";
+//   super.openPopup();
+//  }
+
+ buttonTextSave () {
   this._saveButton.textContent = "Save";
-  super.openPopup();
+ }
+
+ resetForm() {
+  this._popupForm.reset();
  }
 
   setEventListeners() {
@@ -27,8 +35,8 @@ export default class PopupWithForm extends Popup {
      
       this._saveButton.textContent = "Saving...";
       this._handleFormSubmit(this._getInputValues());
-      this._popupForm.reset();
-      this.closePopup();
+      //this._popupForm.reset();
+      //this.closePopup();
       
     });
     super.setEventListeners();

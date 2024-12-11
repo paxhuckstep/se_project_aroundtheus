@@ -29,9 +29,14 @@ function submitProfileForm(userDataInput) {
         name: userData.name,
         job: userData.about,
       });
-      editProfilePopup.closePopup();
+    editProfilePopup.resetForm();
+    editProfilePopup.closePopup();
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => {
+      editProfilePopup.buttonTextSave();
+      editProfilePopup.closePopup();
+    });
 }
 const userInfoMain = new UserInfo({
   userName: ".profile__title",
@@ -44,9 +49,14 @@ function submitAvatarLink(urlInput) {
     .updateProfileAvatar(urlInput.url)
     .then((data) => {
       userInfoMain.setAvatarUrl(data.avatar);
+      changeAvatarPopup.resetForm();
+      changeAvatarPopup.closePopup();
     })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      changeAvatarPopup.buttonTextSave();
     });
 }
 
@@ -109,6 +119,9 @@ function handleTrashButton(card) {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        cardDeletePopup.buttonTextYes();
       });
   });
 }
@@ -119,9 +132,14 @@ function submitCardAdd(inputValues) {
     .then((data) => {
       renderCard(data);
       addFormValidator.disableButton();
+      newCardPopup.resetForm();
+      newCardPopup.closePopup();
     })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      newCardPopup.buttonTextSave();
     });
 }
 
@@ -177,13 +195,15 @@ api
     console.error(err);
   });
 
-api.getCurrentUserInfo().then((result) => {
-  userInfoMain.setUserInfo({
-    name: result.name,
-    job: result.about,
-  });
-  userInfoMain.setAvatarUrl(result.avatar);
-});
+api
+  .getCurrentUserInfo()
+  .then((result) => {
+    userInfoMain.setUserInfo({
+      name: result.name,
+      job: result.about,
+    });
+    userInfoMain.setAvatarUrl(result.avatar);
+  })
+  .catch((error) => console.log(error));
 
 // github pages link: https://paxhuckstep.github.io/se_project_aroundtheus
-//extra notes for pull request
