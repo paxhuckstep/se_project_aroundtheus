@@ -22,7 +22,7 @@ export default class PopupWithForm extends Popup {
 //   super.openPopup();
 //  }
 
- buttonTextSave () {
+ setButtonTextSave () {
   this._saveButton.textContent = "Save";
  }
 

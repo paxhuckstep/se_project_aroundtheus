@@ -14,7 +14,7 @@ setSubmitAction(action) {
 //     this._saveButton.textContent = "Yes";
 //     super.openPopup();
 //    }
-buttonTextYes() {
+setButtonTextYes() {
     this._saveButton.textContent = "Yes";
 }
 

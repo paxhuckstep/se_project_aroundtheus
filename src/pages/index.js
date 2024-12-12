@@ -34,8 +34,7 @@ function submitProfileForm(userDataInput) {
     })
     .catch((error) => console.log(error))
     .finally(() => {
-      editProfilePopup.buttonTextSave();
-      editProfilePopup.closePopup();
+      editProfilePopup.setButtonTextSave();
     });
 }
 const userInfoMain = new UserInfo({
@@ -56,7 +55,7 @@ function submitAvatarLink(urlInput) {
       console.log(error);
     })
     .finally(() => {
-      changeAvatarPopup.buttonTextSave();
+      changeAvatarPopup.setButtonTextSave();
     });
 }
 
@@ -121,7 +120,7 @@ function handleTrashButton(card) {
         console.log(error);
       })
       .finally(() => {
-        cardDeletePopup.buttonTextYes();
+        cardDeletePopup.setButtonTextYes();
       });
   });
 }
@@ -139,7 +138,7 @@ function submitCardAdd(inputValues) {
       console.log(error);
     })
     .finally(() => {
-      newCardPopup.buttonTextSave();
+      newCardPopup.setButtonTextSave();
     });
 }
 
