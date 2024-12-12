@@ -21,34 +21,7 @@ import {
 import Popup from "../components/Popup.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-function submitProfileForm(userDataInput) {
-  api
-    .updateProfileInfo(userDataInput)
-    .then((userData) => {
-      userInfoMain.setUserInfo({
-        name: userData.name,
-        job: userData.about,
-      });
-      editProfilePopup.closePopup();
-    })
-    .catch((error) => console.log(error));
-}
-const userInfoMain = new UserInfo({
-  userName: ".profile__title",
-  userJob: ".profile__description",
-  userAvatar: ".profile__image",
-});
 
-function submitAvatarLink(urlInput) {
-  api
-    .updateProfileAvatar(urlInput.url)
-    .then((data) => {
-      userInfoMain.setAvatarUrl(data.avatar);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 function createCard(cardData) {
   const cardElement = new Card(
@@ -59,6 +32,15 @@ function createCard(cardData) {
     handleTrashButton
   );
   return cardElement.getView();
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  cardSection.addItem(cardElement);
+}
+
+function handleImageButton(cardData) {
+  imagePopup.openPopup(cardData);
 }
 
 function handleLikeClick(card) {
@@ -85,17 +67,6 @@ function handleLikeClick(card) {
   }
 }
 
-const cardSection = new Section({ renderer: renderCard }, ".cards__list");
-
-function renderCard(cardData) {
-  const cardElement = createCard(cardData);
-  cardSection.addItem(cardElement);
-}
-
-function handleImageButton(cardData) {
-  imagePopup.openPopup(cardData);
-}
-
 function handleTrashButton(card) {
   console.log(card);
   const cardId = card.getId();
@@ -109,19 +80,58 @@ function handleTrashButton(card) {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        cardDeletePopup.setButtonTextYes();
       });
   });
 }
 
+function submitProfileForm(userDataInput) {
+  api
+    .updateProfileInfo(userDataInput)
+    .then((userData) => {
+      userInfoMain.setUserInfo({
+        name: userData.name,
+        job: userData.about,
+      });
+      editProfilePopup.resetForm();
+      editProfilePopup.closePopup();
+    })
+    .catch((error) => console.log(error))
+    .finally(() => {
+      editProfilePopup.setButtonTextSave();
+    });
+}
+function submitAvatarLink(urlInput) {
+  api
+    .updateProfileAvatar(urlInput.url)
+    .then((data) => {
+      userInfoMain.setAvatarUrl(data.avatar);
+      changeAvatarPopup.resetForm();
+      changeAvatarPopup.closePopup();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      changeAvatarPopup.setButtonTextSave();
+    });
+}
 function submitCardAdd(inputValues) {
   api
     .createNewCard(inputValues)
     .then((data) => {
       renderCard(data);
       addFormValidator.disableButton();
+      newCardPopup.resetForm();
+      newCardPopup.closePopup();
     })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      newCardPopup.setButtonTextSave();
     });
 }
 
@@ -132,6 +142,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = userDetails.name;
   profileDescriptionInput.value = userDetails.job;
 });
+
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.openPopup();
 });
@@ -140,6 +151,14 @@ avatarPhoto.addEventListener("click", () => {
   changeAvatarPopupValidator.resetValidation();
   changeAvatarPopup.openPopup();
 });
+
+const userInfoMain = new UserInfo({
+  userName: ".profile__title",
+  userJob: ".profile__description",
+  userAvatar: ".profile__image",
+});
+
+const cardSection = new Section({ renderer: renderCard }, ".cards__list");
 
 const editFormValidator = new FormValidator(settings, profileEditForm);
 editFormValidator.enableValidation();
@@ -177,13 +196,15 @@ api
     console.error(err);
   });
 
-api.getCurrentUserInfo().then((result) => {
-  userInfoMain.setUserInfo({
-    name: result.name,
-    job: result.about,
-  });
-  userInfoMain.setAvatarUrl(result.avatar);
-});
+api
+  .getCurrentUserInfo()
+  .then((result) => {
+    userInfoMain.setUserInfo({
+      name: result.name,
+      job: result.about,
+    });
+    userInfoMain.setAvatarUrl(result.avatar);
+  })
+  .catch((error) => console.log(error));
 
 // github pages link: https://paxhuckstep.github.io/se_project_aroundtheus
-
