@@ -82,7 +82,7 @@ function handleTrashButton(card) {
         console.log(error);
       })
       .finally(() => {
-        cardDeletePopup.setButtonTextYes();
+        setTimeout(500, cardDeletePopup.setButtonTextYes());
       });
   });
 }
@@ -100,7 +100,7 @@ function submitProfileForm(userDataInput) {
     })
     .catch((error) => console.log(error))
     .finally(() => {
-      editProfilePopup.setButtonTextSave();
+      setTimeout(50000, editProfilePopup.setButtonTextSave());
     });
 }
 function submitAvatarLink(urlInput) {
@@ -115,7 +115,7 @@ function submitAvatarLink(urlInput) {
       console.log(error);
     })
     .finally(() => {
-      changeAvatarPopup.setButtonTextSave();
+      setTimeout(500, changeAvatarPopup.setButtonTextSave());
     });
 }
 function submitCardAdd(inputValues) {
@@ -131,7 +131,7 @@ function submitCardAdd(inputValues) {
       console.log(error);
     })
     .finally(() => {
-      newCardPopup.setButtonTextSave();
+      setTimeout(500, newCardPopup.setButtonTextSave());
     });
 }
 
