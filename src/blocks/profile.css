@@ -75,7 +75,7 @@
 }
 
 .profile__avatar-button {
-  background: rgb(0 0 0 / 0.6) url(../images/edit-icon-large.png) center no-repeat;
+  background: transparent (../images/edit-icon-large.png) center no-repeat;
   position: absolute;
   top: 0;
   left: 0;
