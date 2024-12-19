@@ -21,8 +21,6 @@ import {
 import Popup from "../components/Popup.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-
-
 function createCard(cardData) {
   const cardElement = new Card(
     cardData,
@@ -82,7 +80,7 @@ function handleTrashButton(card) {
         console.log(error);
       })
       .finally(() => {
-        setTimeout(500, cardDeletePopup.setButtonTextYes());
+        cardDeletePopup.setButtonTextYes();
       });
   });
 }
@@ -100,7 +98,7 @@ function submitProfileForm(userDataInput) {
     })
     .catch((error) => console.log(error))
     .finally(() => {
-      setTimeout(50000, editProfilePopup.setButtonTextSave());
+      editProfilePopup.setButtonTextSave();
     });
 }
 function submitAvatarLink(urlInput) {
@@ -115,7 +113,7 @@ function submitAvatarLink(urlInput) {
       console.log(error);
     })
     .finally(() => {
-      setTimeout(500, changeAvatarPopup.setButtonTextSave());
+      changeAvatarPopup.setButtonTextSave();
     });
 }
 function submitCardAdd(inputValues) {
@@ -131,7 +129,7 @@ function submitCardAdd(inputValues) {
       console.log(error);
     })
     .finally(() => {
-      setTimeout(500, newCardPopup.setButtonTextSave());
+      newCardPopup.setButtonTextSave();
     });
 }
 

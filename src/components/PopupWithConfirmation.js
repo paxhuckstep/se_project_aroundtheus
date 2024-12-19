@@ -12,7 +12,9 @@ setSubmitAction(action) {
 }
 
 setButtonTextYes() {
-   setTimeout(5000, this._saveButton.textContent = "Yes");
+  setTimeout(() => {
+    this._saveButton.textContent = "Yes";
+  }, 600);
 }
 
   setEventListeners() {
