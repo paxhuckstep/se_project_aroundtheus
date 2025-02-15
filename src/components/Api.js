@@ -5,6 +5,7 @@ export default class Api {
     this._headers = options.headers;
   }
 
+
   // C Create R Read U Update D Delete
   // POST, GET*, { PATCH, PUT }, DELETE
 
@@ -51,7 +52,7 @@ export default class Api {
   }
 
   deleteSelectedCard(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}`,/*where do we get cardId*/  {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
         headers: this._headers,
         method: "DELETE",
     }).then(this.handleServerResponse);
