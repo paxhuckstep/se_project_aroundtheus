@@ -21,8 +21,6 @@ import {
 import Popup from "../components/Popup.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-
-
 function createCard(cardData) {
   const cardElement = new Card(
     cardData,

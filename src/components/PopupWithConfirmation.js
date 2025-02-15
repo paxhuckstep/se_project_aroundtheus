@@ -10,12 +10,11 @@ export default class PopupWithConfirmation extends Popup {
 setSubmitAction(action) {
     this._handleSubmit = action;
 }
-// openPopup() {
-//     this._saveButton.textContent = "Yes";
-//     super.openPopup();
-//    }
+
 setButtonTextYes() {
+  setTimeout(() => {
     this._saveButton.textContent = "Yes";
+  }, 600);
 }
 
   setEventListeners() {

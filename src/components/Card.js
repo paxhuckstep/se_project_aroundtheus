@@ -13,7 +13,6 @@ export default class Card {
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", () => {
       this._handleLikeClick(this);
-      console.log(this);
     });
     this._cardTrashButton.addEventListener("click", () => {
       this._handleTrashClick(this);
@@ -23,8 +22,7 @@ export default class Card {
     });
   }
 
-  cardDeletionConfirmed() { // _handletrashButton
-    console.log("card delete clicked");
+  cardDeletionConfirmed() {
     this._cardElement.remove();
     this._cardElement = null;
   }
